@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PeopleManager (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PeopleManager (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
