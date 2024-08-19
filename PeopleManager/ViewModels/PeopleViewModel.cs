@@ -15,44 +15,16 @@ using System.Windows.Input;
 
 namespace PeopleManager.ViewModels
 {
-    public class PeopleViewModel 
+    public class PeopleViewModel
     {
-        private readonly ApiClient _apiClient;
-        private const string URL = "https://gerador-nomes.wolan.net/";
-        private readonly int totalNames = 2;
+        public ObservableCollection<Person> People { get; private set; } = new ObservableCollection<Person>();
 
-
-        public ObservableCollection<Person> People { get; set; }
-
-    
         public PeopleViewModel()
         {
-            _apiClient = new ApiClient(URL);
-            People = new ObservableCollection<Person>();
-            RandomRegistrationPeople();
+            People = PersonManager.GetPeople(); // Populate the list with initial data
         }
-        
 
-        
-        public async void RandomRegistrationPeople()
-        {
-            List<string> names = await _apiClient.GetNames(totalNames);
-            List<string> surnames = await _apiClient.GetSurname(totalNames);
 
-            for (int i = 0; i < totalNames; i++)
-            {
-                Person p = new Person(i + 1, names[i], surnames[i], GenerateCpf.Create());
-                People.Add(p);
-            }
-
-        }
-        
-        
-        public void AddPerson(Person person)
-        {
-            People.Add(person);
-        }
-       
 
     }
 }

@@ -8,13 +8,7 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Views\Molecules\PeopleListHeaderMolecule.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Organisms\PeopleListOrganism.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Molecules\PeopleListBodyMolecule.xaml">
+    <Page Update="Views\PeopleView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Organisms\HeaderOrganism.xaml">

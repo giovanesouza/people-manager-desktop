@@ -11,5 +11,5 @@ namespace PeopleManager.ViewModels
     public class MainViewModel
     {
 
-     }
+    }
 }
