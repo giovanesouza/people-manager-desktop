@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
+using PeopleManager.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,11 +27,8 @@ namespace PeopleManager.Views
     {
         public MainView()
         {
-            this.InitializeComponent();
-            
+          this.InitializeComponent();
         }
-
-
 
     }
 }

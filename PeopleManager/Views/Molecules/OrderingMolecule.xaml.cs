@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using PeopleManager.Models;
+using PeopleManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,5 +26,7 @@ namespace PeopleManager.Views.Molecules
         {
             this.InitializeComponent();
         }
+     
+
     }
 }

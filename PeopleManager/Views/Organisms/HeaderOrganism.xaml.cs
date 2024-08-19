@@ -24,5 +24,6 @@ namespace PeopleManager.Views.Organisms
         {
             this.InitializeComponent();
         }
+
     }
 }

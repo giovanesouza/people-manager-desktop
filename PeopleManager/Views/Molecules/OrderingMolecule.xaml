@@ -12,8 +12,9 @@
     <StackPanel x:Name="gridHeaderOrdination" Grid.Column="2" Orientation="Vertical" Width="200" Margin="0,0,20,0">
         <TextBlock Text="ORDENAR" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <ComboBox x:Name="cbbOrdination" PlaceholderText="Tipo de ordenação" 
-                            Width="200" Margin="0,5,0,0">
+                            Width="200" Margin="0,5,0,0" >
             <!--SelectionChanged="cbbOrdination_SelectionChanged">-->
+       
             <ComboBoxItem x:Name="cbIDefault" Content="Padrão" />
             <ComboBoxItem Content="Por Nome"  />
             <ComboBoxItem Content="Por Sobrenome" />
