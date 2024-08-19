@@ -13,12 +13,12 @@ namespace PeopleManager.Models
     //public class Person
     {
         /*
-        private int Id;
-        private string Name;
-        private string Surname;
-        private string Fullname;
-        private string Cpf;
-        private string RegisteredAt;
+        public int Id;
+        public string Name;
+        public string Surname;
+        public string Fullname;
+        public string Cpf;
+        public string RegisteredAt;
 
         public Person() { }
 
@@ -31,18 +31,9 @@ namespace PeopleManager.Models
             Cpf = cpf;
             RegisteredAt = string.Format("{0:d} às {0:t}", DateTime.Now);
         }
+        */      
 
-        public List<Person> GetPeople()
-        {
-            List<Person> peopleList = new List<Person>()
-            {
-                new Person(1, "Giovane", "Souza", "123.456.789-84"),
-                new Person(2, "Maria", "Joana", "123.456.789-84"),
-            };
-            return peopleList;
-        }
-        */
-
+        
         private int id;
         private string name;
         private string surname;
@@ -153,7 +144,7 @@ namespace PeopleManager.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-     
+       
 
     }
 }
