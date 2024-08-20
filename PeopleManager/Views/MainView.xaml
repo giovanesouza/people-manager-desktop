@@ -12,7 +12,7 @@
     Title="People Manager">
 
     <!--<Grid Margin="10"  Background="#4CD0D0D0">-->
-    <Grid Margin="10">
+    <Grid Margin="10" x:Name="main">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>

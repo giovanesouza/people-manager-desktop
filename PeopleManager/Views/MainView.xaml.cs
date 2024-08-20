@@ -28,6 +28,8 @@ namespace PeopleManager.Views
         public MainView()
         {
           this.InitializeComponent();
+            // Sets the context in the main window sharing with its descendants
+            main.DataContext = new PeopleViewModel(); 
         }
 
     }

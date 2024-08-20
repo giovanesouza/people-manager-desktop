@@ -47,8 +47,7 @@ namespace PeopleManager.Models
         {
             if (DatabasePeople.Count == 0)
             {
-                // Preenche a lista se ainda não estiver preenchida
-                _ = RandomRegistrationPeople();
+                _ = RandomRegistrationPeople(); // Fill the list if it is not already filled
             }
             return DatabasePeople;
         }

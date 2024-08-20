@@ -5,6 +5,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using PeopleManager.Models;
+using PeopleManager.Utils;
+using PeopleManager.ViewModels;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,5 +28,11 @@ namespace PeopleManager.Views.Molecules
         {
             this.InitializeComponent();
         }
+        
+        private void FormatCpf(object sender, KeyRoutedEventArgs e)
+        {
+            txtbCpf.Text = FormatData.FormatCpf(txtbCpf.Text);
+        }
+
     }
 }
