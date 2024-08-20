@@ -7,13 +7,14 @@ using System.Windows.Input;
 
 namespace PeopleManager.Services
 {
-    public class RelayCommand : ICommand
+    // Class RelayCommand with generic type
+    public class RelayCommand<T> : ICommand
     {     
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
+        private Action<T> execute;
+        private Func<T, bool> canExecute;
         public event EventHandler CanExecuteChanged;
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
@@ -21,12 +22,12 @@ namespace PeopleManager.Services
 
         public bool CanExecute(object parameter)
         {
-            return canExecute == null || canExecute(parameter);
+            return canExecute == null || canExecute((T)parameter);
         }
 
         public void Execute(object parameter)
         {
-            execute(parameter);
+            execute((T)parameter);
         }
 
         // Method to trigger the CanExecuteChanged event manually
@@ -34,7 +35,7 @@ namespace PeopleManager.Services
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
-      
+
 
     }
 }

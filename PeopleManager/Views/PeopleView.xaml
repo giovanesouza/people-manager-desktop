@@ -6,7 +6,8 @@
     xmlns:local="using:PeopleManager.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="PeopleViewControl">
 
     
     <UserControl.Resources>
@@ -70,20 +71,29 @@
                                     Grid.Column="1" VerticalAlignment="Center" />
                                 
                                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                                    <!--Tag="{Binding}": 
+                                    Stores the current data object to which the button is associated -->
                                     <Button Tag="{Binding}"
                                             Margin="2" Style="{StaticResource AccentButtonStyle}">
-                                    <!--Click="btnEdit_Click"-->
-                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,5,0" />
                                             <TextBlock Text="Editar"/>
                                         </StackPanel>
                                     </Button>
 
-                                    <Button Tag="{Binding}" Margin="2" Style="{StaticResource AccentButtonStyle}">
+                                    <Button Margin="2" 
+                                            Style="{StaticResource AccentButtonStyle}"
+                                            Command="{Binding DataContext.DeleteCommand, ElementName=PeopleViewControl}"
+                                            CommandParameter="{Binding}">
+                                        <!--
+                                        ** ElementName: Accesses and uses the DataContext of this control.
+                                        It was named using x:Name. It can be used in other files.
+                                        
+                                        ** CommandParameter="{Binding}": Used to pass the parameter
+                                        -->
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Delete" Margin="0,0,5,0" />
-                                            <!--Foreground="#F00"/>-->
-                                            <TextBlock Text="Excluir"/>
+                                            <TextBlock Text="Excluir" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>

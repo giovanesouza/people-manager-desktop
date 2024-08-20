@@ -21,15 +21,20 @@ namespace PeopleManager.ViewModels
         private string _name;
         private string _surname;
         private string _cpf;
+
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Person> People { get; private set; } = new ObservableCollection<Person>();
+        
         public ICommand RegisterCommand { get; }
+        public ICommand DeleteCommand { get; }
+
         private bool canRegister; // Used to enable or disable the registration button 
 
         public PeopleViewModel()
         {
             People = PersonManager.GetPeople(); // Populate the list with initial data
-            RegisterCommand = new RelayCommand(RegisterPerson, CanExecuteRegister);
+            RegisterCommand = new RelayCommand<object>(RegisterPerson, CanExecuteRegister);
+            DeleteCommand = new RelayCommand<Person>(DeletePerson, CanExecuteDeletePerson);
         }
     
         public string Name
@@ -65,6 +70,16 @@ namespace PeopleManager.ViewModels
             }
         }
 
+        public bool CanRegister
+        {
+            get => canRegister;
+            private set
+            {
+                canRegister = value;
+                OnPropertyChanged();
+                ((RelayCommand<object>)RegisterCommand).RaiseCanExecuteChanged();
+            }
+        }
 
         public void RegisterPerson(object obj)
         {
@@ -74,31 +89,29 @@ namespace PeopleManager.ViewModels
             ClearFields();
         }
 
-        public bool CanRegister
-        {
-            get => canRegister;
-            private set
-            {
-                canRegister = value;
-                OnPropertyChanged();
-                ((RelayCommand)RegisterCommand).RaiseCanExecuteChanged();
-            }
-        }
-
-        private void ValidateInputs()
-        {
-            // Validates if all required fields are filled
-            CanRegister = !string.IsNullOrWhiteSpace(Name) &&
-                !string.IsNullOrWhiteSpace(Surname) && 
-                !string.IsNullOrWhiteSpace(Cpf) && Cpf.Length > 10;
-        }
-
         private bool CanExecuteRegister(object parameter)
         {
             return CanRegister;
         }
 
- 
+        public void DeletePerson(Person person)
+        {
+            PersonManager.DeletePerson(person.Id);
+        }
+
+        private bool CanExecuteDeletePerson(Person person)
+        {
+            return person != null;
+        }
+
+
+        private void ValidateInputs()
+        {
+            // Validates if all required fields are filled
+            CanRegister = !string.IsNullOrWhiteSpace(Name) &&
+                !string.IsNullOrWhiteSpace(Surname) &&
+                !string.IsNullOrWhiteSpace(Cpf) && Cpf.Length > 10;
+        }
 
         public void ClearFields()
         {
@@ -106,13 +119,6 @@ namespace PeopleManager.ViewModels
             Surname = "";
             Cpf = "";
         }
-
-        /*
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        */
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {

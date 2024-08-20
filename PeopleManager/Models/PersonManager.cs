@@ -58,5 +58,18 @@ namespace PeopleManager.Models
             DatabasePeople.Add(person);
         }
 
+        public static void DeletePerson(int id)
+        {
+            var person = DatabasePeople.FirstOrDefault(p => p.Id == id);
+            if (person != null)
+            {
+                DatabasePeople.Remove(person);
+            }
+            else
+            {
+                Console.WriteLine($"Pessoa com ID {id} não encontrada.");
+            }
+        }
+
     }
 }
