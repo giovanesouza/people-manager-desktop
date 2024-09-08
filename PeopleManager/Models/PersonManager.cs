@@ -58,6 +58,17 @@ namespace PeopleManager.Models
             DatabasePeople.Add(person);
         }
 
+        public static void UpdatePerson(int id, string name, string surname, string cpf)
+        {
+            var person = DatabasePeople.FirstOrDefault(p => p.Id == id);
+            if (person != null)
+            {
+                person.Name = name;
+                person.Surname = surname;
+                person.Cpf = cpf;
+            }
+        }
+
         public static void DeletePerson(int id)
         {
             var person = DatabasePeople.FirstOrDefault(p => p.Id == id);
@@ -65,10 +76,7 @@ namespace PeopleManager.Models
             {
                 DatabasePeople.Remove(person);
             }
-            else
-            {
-                Console.WriteLine($"Pessoa com ID {id} não encontrada.");
-            }
+
         }
 
     }

@@ -13,11 +13,13 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\ContentDialogTemplates\EditDialog.xaml" />
     <None Remove="Views\Molecules\FiltersMolecules.xaml" />
     <None Remove="Views\Molecules\OrderingMolecule.xaml" />
     <None Remove="Views\Molecules\RegisterMolecule.xaml" />
     <None Remove="Views\Organisms\HeaderOrganism.xaml" />
     <None Remove="Views\PeopleView.xaml" />
+    <None Remove="Views\UpdatePersonView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +48,11 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\UpdatePersonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\PeopleView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -69,6 +76,19 @@
     <Page Update="Views\Molecules\RegisterMolecule.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialog\EditDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogTemplates\EditDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Dialogs\" />
   </ItemGroup>
 
   <!--

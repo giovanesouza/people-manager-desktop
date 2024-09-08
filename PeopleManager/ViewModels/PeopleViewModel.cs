@@ -12,6 +12,8 @@ using Microsoft.UI.Xaml;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Runtime.CompilerServices;
+using PeopleManager.Views;
+using Microsoft.UI.Xaml.Controls;
 
 
 namespace PeopleManager.ViewModels
@@ -27,6 +29,9 @@ namespace PeopleManager.ViewModels
         
         public ICommand RegisterCommand { get; }
         public ICommand DeleteCommand { get; }
+        //public ICommand EditPersonCommand { get; set; }
+
+
 
         private bool canRegister; // Used to enable or disable the registration button 
 
@@ -35,8 +40,23 @@ namespace PeopleManager.ViewModels
             People = PersonManager.GetPeople(); // Populate the list with initial data
             RegisterCommand = new RelayCommand<object>(RegisterPerson, CanExecuteRegister);
             DeleteCommand = new RelayCommand<Person>(DeletePerson, CanExecuteDeletePerson);
+            //EditPersonCommand = new RelayCommand<Person>(EditPerson, CanEditPerson);
         }
-    
+
+        /*
+        private void EditPerson(Person person)
+        {
+
+            var editView = new UpdatePersonView(person.Clone());
+            editView.Activate();
+        }
+
+        private bool CanEditPerson(Person person)
+        {
+            return person != null;
+        }
+        */
+
         public string Name
         {
             get => _name;
@@ -70,16 +90,6 @@ namespace PeopleManager.ViewModels
             }
         }
 
-        public bool CanRegister
-        {
-            get => canRegister;
-            private set
-            {
-                canRegister = value;
-                OnPropertyChanged();
-                ((RelayCommand<object>)RegisterCommand).RaiseCanExecuteChanged();
-            }
-        }
 
         public void RegisterPerson(object obj)
         {
@@ -89,14 +99,25 @@ namespace PeopleManager.ViewModels
             ClearFields();
         }
 
+        public void DeletePerson(Person person)
+        {
+            PersonManager.DeletePerson(person.Id);
+        }
+
         private bool CanExecuteRegister(object parameter)
         {
             return CanRegister;
         }
 
-        public void DeletePerson(Person person)
+        public bool CanRegister
         {
-            PersonManager.DeletePerson(person.Id);
+            get => canRegister;
+            private set
+            {
+                canRegister = value;
+                OnPropertyChanged();
+                ((RelayCommand<object>)RegisterCommand).RaiseCanExecuteChanged();
+            }
         }
 
         private bool CanExecuteDeletePerson(Person person)

@@ -74,10 +74,13 @@
                                     <!--Tag="{Binding}": 
                                     Stores the current data object to which the button is associated -->
                                     <Button Tag="{Binding}"
-                                            Margin="2" Style="{StaticResource AccentButtonStyle}">
+                                            Margin="2" Style="{StaticResource AccentButtonStyle}"
+                                            Click="PersonEdit">
                                             <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,5,0" />
                                             <TextBlock Text="Editar"/>
+                                            <!--Command="{Binding DataContext.EditPersonCommand,
+                                        ElementName=PeopleViewControl}" CommandParameter="{Binding}"-->
                                         </StackPanel>
                                     </Button>
 

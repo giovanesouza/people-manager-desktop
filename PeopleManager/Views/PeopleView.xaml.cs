@@ -1,19 +1,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+using PeopleManager.Models;
+using PeopleManager.Views.Dialogs;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using PeopleManager.ViewModels;
-using PeopleManager.Views.Molecules;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,6 +16,42 @@ namespace PeopleManager.Views
             this.InitializeComponent();
         }
 
+        private async void PersonEdit(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var button = sender as Button;
+                var person = button?.Tag as Person;
+
+                if (person != null) 
+                { 
+                    var editDialog = new EditDialog(person.Clone())
+                    {
+                        XamlRoot = this.XamlRoot
+                    };
+
+                    var result = await editDialog.ShowAsync();
+
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        person.Name = editDialog.EditablePerson.Name;
+                        person.Surname = editDialog.EditablePerson.Surname;
+                        person.Cpf = editDialog.EditablePerson.Cpf;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Atualização cancelada!");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write("Error", ex.Message);
+            }
+
+        }
+        
 
     }
 }

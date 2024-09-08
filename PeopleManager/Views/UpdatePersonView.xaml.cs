@@ -5,6 +5,9 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using PeopleManager.Utils;
+using PeopleManager.Models;
+using PeopleManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,9 +15,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
-using PeopleManager.ViewModels;
-using Microsoft.UI.Windowing;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,14 +24,24 @@ namespace PeopleManager.Views
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public partial class MainView : Window
+    public sealed partial class UpdatePersonView : Window
     {
-        public MainView()
+        public UpdatePersonView(Person person)
         {
-          this.InitializeComponent();
-            // Sets the context in the main window sharing with its descendants
-            main.DataContext = new PeopleViewModel();
+            this.InitializeComponent();
+            //updateView.DataContext = person;
+            updateView.DataContext = new UpdatePersonViewModel(person);
+
         }
 
+        private void FormatCpf(object sender, KeyRoutedEventArgs e)
+        {
+            txtbCpf.Text = FormatData.FormatCpf(txtbCpf.Text);
+        }
+
+        private void CloseUpdateView(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
