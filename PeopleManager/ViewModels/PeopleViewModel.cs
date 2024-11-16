@@ -1,45 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PeopleManager.Models;
 using PeopleManager.Services;
-using PeopleManager.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using PeopleManager.Utils;
-using Microsoft.UI.Xaml;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 
 namespace PeopleManager.ViewModels
 {
-    public class PeopleViewModel : INotifyPropertyChanged
+    public partial class PeopleViewModel : INotifyPropertyChanged
     {
+        #region Fields
         private string _name;
         private string _surname;
         private string _cpf;
+        private bool _canRegisterButton;
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Person> People { get; private set; } = new ObservableCollection<Person>();
-        public ICommand RegisterCommand { get; }
-        private bool canRegister; // Used to enable or disable the registration button 
+        #endregion
 
+        public ObservableCollection<Person> People { get; private set; } = new ObservableCollection<Person>();
+        public ICommand RegisterPersonCommand { get; }
+  
+        #region Constructor
         public PeopleViewModel()
         {
             People = PersonManager.GetPeople(); // Populate the list with initial data
-            RegisterCommand = new RelayCommand(RegisterPerson, CanExecuteRegister);
+            RegisterPersonCommand = new RelayCommand(RegisterPerson);
         }
-    
+        #endregion
+
+        #region Properties
         public string Name
         {
             get => _name;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-                ValidateInputs();
+                if(OnPropertyChanged(ref _name, value)) ValidateInputs();
             }
         }
  
@@ -48,76 +45,74 @@ namespace PeopleManager.ViewModels
             get => _surname;
             set
             {
-                _surname = value;
-                OnPropertyChanged(nameof(Surname));
-                ValidateInputs();
+                if(OnPropertyChanged(ref _surname, value)) ValidateInputs();
             }
         }
 
         public string Cpf
         {
             get => _cpf;
-            set
+            set 
             {
-                _cpf = value;
-                OnPropertyChanged(nameof(Cpf));
-                ValidateInputs();
+                if(OnPropertyChanged(ref _cpf, value)) ValidateInputs();
             }
         }
 
+        public bool CanRegisterButton
+        {
+            get => _canRegisterButton;
+            set
+            {
+                if(OnPropertyChanged(ref _canRegisterButton, value)) ValidateInputs();
+            }
+        }
+        #endregion
 
         public void RegisterPerson(object obj)
         {
             int id = People.Count + 1;
-            Person newPerson = new Person(id, Name, Surname, Cpf);
-            PersonManager.CreatePerson(newPerson);
-            ClearFields();
-        }
-
-        public bool CanRegister
-        {
-            get => canRegister;
-            private set
+            if(CanRegisterButton)
             {
-                canRegister = value;
-                OnPropertyChanged();
-                ((RelayCommand)RegisterCommand).RaiseCanExecuteChanged();
+                Person newPerson = new(id, Name, Surname, Cpf);
+                PersonManager.CreatePerson(newPerson);
+                ClearFields();
             }
         }
 
-        private void ValidateInputs()
+        public void ValidateInputs()
         {
-            // Validates if all required fields are filled
-            CanRegister = !string.IsNullOrWhiteSpace(Name) &&
-                !string.IsNullOrWhiteSpace(Surname) && 
-                !string.IsNullOrWhiteSpace(Cpf) && Cpf.Length > 10;
+            CanRegisterButton = !string.IsNullOrEmpty(Name) && 
+                !string.IsNullOrEmpty(Surname) && 
+                !string.IsNullOrEmpty(Cpf);
         }
 
-        private bool CanExecuteRegister(object parameter)
-        {
-            return CanRegister;
-        }
-
- 
-
-        public void ClearFields()
-        {
+         public void ClearFields()
+         {
             Name = "";
             Surname = "";
             Cpf = "";
+         }
+
+        protected bool OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = null) 
+        { 
+            if (!EqualityComparer<T>.Default.Equals(field, value)) 
+            { 
+                field = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true; 
+            } 
+            return false; 
         }
 
         /*
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (!EqualityComparer<T>.Default.Equals(field, value))
+            {
+                field = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
         */
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
     }
 }
