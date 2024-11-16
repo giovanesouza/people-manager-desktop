@@ -11,7 +11,7 @@ namespace PeopleManager.Utils
     {
         public static string FormatCpf(string cpf)
         {
-            cpf = cpf.Replace(".", "").Replace("-", "");
+            cpf = Regex.Replace(cpf, @"\D", "");
             if (cpf.Length == 11)
                 return Regex.Replace(cpf, @"(\d{3})(\d{3})(\d{3})(\d{2})", "$1.$2.$3-$4");
 

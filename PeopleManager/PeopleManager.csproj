@@ -15,11 +15,9 @@
   <ItemGroup>
     <None Remove="Views\Molecules\FiltersMolecules.xaml" />
     <None Remove="Views\Molecules\OrderingMolecule.xaml" />
-    <None Remove="Views\Molecules\PeopleListBodyMolecule.xaml" />
-    <None Remove="Views\Molecules\PeopleListHeaderMolecule.xaml" />
     <None Remove="Views\Molecules\RegisterMolecule.xaml" />
     <None Remove="Views\Organisms\HeaderOrganism.xaml" />
-    <None Remove="Views\Organisms\PeopleListOrganism.xaml" />
+    <None Remove="Views\PeopleView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +33,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
-    <PackageReference Include="RestSharp" Version="111.4.1" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -48,16 +46,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Molecules\PeopleListHeaderMolecule.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Organisms\PeopleListOrganism.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\Molecules\PeopleListBodyMolecule.xaml">
+    <Page Update="Views\PeopleView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

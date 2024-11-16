@@ -1,55 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PeopleManager.Models
 {
     // INotifyPropertyChanged - Identifica as mudanças no modelo
-    public class Person : INotifyPropertyChanged
-    //public class Person
+    public partial class Person : INotifyPropertyChanged
     {
-        /*
-        private int Id;
-        private string Name;
-        private string Surname;
-        private string Fullname;
-        private string Cpf;
-        private string RegisteredAt;
-
-        public Person() { }
-
-        public Person(int id, string name, string surname, string cpf)
-        {
-            Id = id;
-            Name = name;
-            Surname = surname;
-            Fullname = $"{name} {surname}";
-            Cpf = cpf;
-            RegisteredAt = string.Format("{0:d} às {0:t}", DateTime.Now);
-        }
-
-        public List<Person> GetPeople()
-        {
-            List<Person> peopleList = new List<Person>()
-            {
-                new Person(1, "Giovane", "Souza", "123.456.789-84"),
-                new Person(2, "Maria", "Joana", "123.456.789-84"),
-            };
-            return peopleList;
-        }
-        */
-
         private int id;
         private string name;
         private string surname;
         private string fullname;
         private string cpf;
         private string registeredAt;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int Id
@@ -153,7 +115,7 @@ namespace PeopleManager.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-     
+       
 
     }
 }

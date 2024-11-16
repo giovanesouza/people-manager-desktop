@@ -6,7 +6,7 @@
     xmlns:local="using:PeopleManager.Views.Organisms"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:PeopleManager.Views.Molecules"
+    xmlns:molecules="using:PeopleManager.Views.Molecules"
     mc:Ignorable="d">
 
     <Grid x:Name="gridHeader"
@@ -16,8 +16,8 @@
           ColumnDefinitions="Auto, Auto, Auto"
           RowDefinitions ="*">
 
-        <controls:RegisterMolecule Grid.Column="0" />
-        <controls:FiltersMolecules Grid.Column="1" />
-        <controls:OrderingMolecule Grid.Column="2" />
+        <molecules:RegisterMolecule Grid.Column="0" />
+        <molecules:FiltersMolecules Grid.Column="1" />
+        <molecules:OrderingMolecule Grid.Column="2" />
     </Grid>
 </UserControl>

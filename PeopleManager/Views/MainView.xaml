@@ -6,17 +6,19 @@
     xmlns:local="using:PeopleManager.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:PeopleManager.Views.Organisms"
+    xmlns:organisms="using:PeopleManager.Views.Organisms"
+    xmlns:views="using:PeopleManager.Views"
     mc:Ignorable="d"
     Title="People Manager">
 
-    <Grid Margin="10"  Background="#4CD0D0D0">
+    <!--<Grid Margin="10"  Background="#4CD0D0D0">-->
+    <Grid Margin="10" x:Name="main">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <controls:HeaderOrganism Grid.Row="0" x:Name="headerApp" />
-        <controls:PeopleListOrganism Grid.Row="1" x:Name="listDataGrid" />
+        <organisms:HeaderOrganism Grid.Row="0" />
+        <views:PeopleView Grid.Row="1" />
     </Grid>
 </Window>

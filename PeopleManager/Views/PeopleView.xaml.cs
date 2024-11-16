@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using PeopleManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,18 +12,21 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using PeopleManager.ViewModels;
+using PeopleManager.Views.Molecules;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace PeopleManager.Views.Molecules
+namespace PeopleManager.Views
 {
-    public sealed partial class PeopleListBodyMolecule : UserControl
+    public sealed partial class PeopleView : UserControl
     {
-        public PeopleListBodyMolecule()
+        public PeopleView()
         {
             this.InitializeComponent();
-            //DataContext = new PeopleViewModel();
         }
+
+
     }
 }
