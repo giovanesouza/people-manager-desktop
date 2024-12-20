@@ -8,19 +8,22 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Views\PeopleView.xaml">
+    <Page Update="Views\Organisms\CustomTitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Organisms\BaseForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Home.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Organisms\HeaderOrganism.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Molecules\OrderingMolecule.xaml">
+    <Page Update="Views\Molecules\FiltersForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Molecules\FiltersMolecules.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Molecules\RegisterMolecule.xaml">
+    <Page Update="Views\Molecules\RegisterForm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

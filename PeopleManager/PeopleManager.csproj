@@ -13,10 +13,10 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\Molecules\FiltersMolecules.xaml" />
-    <None Remove="Views\Molecules\OrderingMolecule.xaml" />
-    <None Remove="Views\Molecules\RegisterMolecule.xaml" />
-    <None Remove="Views\Organisms\HeaderOrganism.xaml" />
+    <None Remove="Views\Home.xaml" />
+    <None Remove="Views\Molecules\SocialMedia.xaml" />
+    <None Remove="Views\Organisms\BaseForm.xaml" />
+    <None Remove="Views\Organisms\CustomTitleBar.xaml" />
     <None Remove="Views\PeopleView.xaml" />
   </ItemGroup>
 
@@ -46,6 +46,26 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\Organisms\CustomTitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Organisms\BaseForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Molecules\SocialMedia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\PeopleView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -56,17 +76,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Molecules\OrderingMolecule.xaml">
+    <Page Update="Views\Molecules\OrderingForm.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Molecules\FiltersMolecules.xaml">
+    <Page Update="Views\Molecules\FiltersForm.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Molecules\RegisterMolecule.xaml">
+    <Page Update="Views\Molecules\RegisterForm.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

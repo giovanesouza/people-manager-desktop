@@ -6,22 +6,25 @@ namespace PeopleManager.Models
     // INotifyPropertyChanged - Identifica as mudanças no modelo
     public partial class Person : INotifyPropertyChanged
     {
-        private int id;
-        private string name;
-        private string surname;
-        private string fullname;
-        private string cpf;
-        private string registeredAt;
+        #region Fields
+        private int _id;
+        private string _name;
+        private string _surname;
+        private string _fullname;
+        private string _cpf;
+        private string _registeredAt;
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
+        #region Properties
         public int Id
         {
-            get { return id; }
+            get { return _id; }
             set
             {
-                if (id != value)
+                if (_id != value)
                 {
-                    id = value;
+                    _id = value;
                     OnPropertyChanged(nameof(Id));
                 }
             }
@@ -29,40 +32,40 @@ namespace PeopleManager.Models
 
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
-                if (name != value)
+                if (_name != value)
                 {
-                    name = value;
+                    _name = value;
                     OnPropertyChanged(nameof(Name));
-                    Fullname = $"{name} {Surname}";
+                    Fullname = $"{_name} {Surname}";
                 }
             }
         }
 
         public string Surname
         {
-            get { return surname; }
+            get { return _surname; }
             set
             {
-                if (surname != value)
+                if (_surname != value)
                 {
-                    surname = value;
+                    _surname = value;
                     OnPropertyChanged(nameof(Surname));
-                    Fullname = $"{Name} {surname}";
+                    Fullname = $"{Name} {_surname}";
                 }
             }
         }
 
         public string Fullname
         {
-            get { return fullname; }
+            get { return _fullname; }
             set
             {
-                if (fullname != value)
+                if (_fullname != value)
                 {
-                    fullname = value;
+                    _fullname = value;
                     OnPropertyChanged(nameof(Fullname));
                 }
             }
@@ -70,12 +73,12 @@ namespace PeopleManager.Models
 
         public string Cpf
         {
-            get { return cpf; }
+            get { return _cpf; }
             set
             {
-                if (cpf != value)
+                if (_cpf != value)
                 {
-                    cpf = value;
+                    _cpf = value;
                     OnPropertyChanged(nameof(Cpf));
                 }
             }
@@ -83,16 +86,17 @@ namespace PeopleManager.Models
 
         public string RegisteredAt
         {
-            get { return registeredAt; }
+            get { return _registeredAt; }
             set
             {
-                if (registeredAt != value)
+                if (_registeredAt != value)
                 {
-                    registeredAt = value;
+                    _registeredAt = value;
                     OnPropertyChanged(nameof(RegisteredAt));
                 }
             }
         }
+        #endregion
 
         public Person(int id, string name, string surname, string cpf)
         {
@@ -110,12 +114,10 @@ namespace PeopleManager.Models
             return (Person)this.MemberwiseClone();
         }
 
- 
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-       
 
     }
 }
