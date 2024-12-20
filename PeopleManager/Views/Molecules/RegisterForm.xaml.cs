@@ -7,16 +7,16 @@ using PeopleManager.Utils;
 
 namespace PeopleManager.Views.Molecules
 {
-    public partial class RegisterMolecule : UserControl
+    public partial class RegisterForm : UserControl
     {
-        public RegisterMolecule()
+        public RegisterForm()
         {
             this.InitializeComponent();
         }
         
         private void FormatCpf(object sender, KeyRoutedEventArgs e)
         {
-            txtbCpf.Text = FormatData.FormatCpf(txtbCpf.Text);
+            CpfRegister.Text = FormatData.FormatCpf(CpfRegister.Text);
         }
     }
 }

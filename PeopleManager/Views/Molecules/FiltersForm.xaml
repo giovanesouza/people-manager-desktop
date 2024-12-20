@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <UserControl
-    x:Class="PeopleManager.Views.Molecules.RegisterMolecule"
+    x:Class="PeopleManager.Views.Molecules.FiltersForm"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:PeopleManager.Views.Molecules"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="using:PeopleManager.Views"
     mc:Ignorable="d">
 
-    <!--  Register fields  -->
+    <!--  Filters Fields  -->
     <StackPanel
-        Grid.Column="0"
         Width="180"
         Margin="0,0,20,0"
         Orientation="Vertical">
-        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="CADASTRO" />
+        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="FILTRAR" />
         <TextBox
-            x:Name="txtbName"
+            x:Name="txtNameFilter"
             Margin="0,5,0,5"
             MaxLength="10"
-            PlaceholderText="Nome"
-            Text="{Binding Name, Mode=TwoWay}" />
+            PlaceholderText="Nome" />
         <TextBox
-            x:Name="txtbSurname"
+            x:Name="txtSurnameFilter"
             Margin="0,5,0,5"
             MaxLength="10"
-            PlaceholderText="Sobrenome"
-            Text="{Binding Surname, Mode=TwoWay}" />
+            PlaceholderText="Sobrenome" />
         <TextBox
-            x:Name="txtbCpf"
+            x:Name="txtCpfFilter"
             Margin="0,5,0,5"
-            KeyUp="FormatCpf"
-            MaxLength="11"
-            PlaceholderText="CPF"
-            Text="{Binding Cpf, Mode=TwoWay}" />
-
+            MaxLength="14"
+            PlaceholderText="CPF" />
+        <!--  KeyUp="cpf_KeyUp"  -->
         <Button
-            Name="RegisterPerson"
+            x:Name="btnFilter"
             Margin="0,5,0,0"
             HorizontalAlignment="Right"
-            Command="{Binding RegisterPersonCommand}"
-            Content="Cadastrar"
-            IsEnabled="{Binding CanRegisterButton}"
+            Content="Filtrar"
             Style="{StaticResource AccentButtonStyle}" />
+        <!--  Click="btnFilter_Click"  -->
     </StackPanel>
 </UserControl>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="PeopleManager.Views.Organisms.BaseForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PeopleManager.Views.Organisms"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel x:Name="BaseFormStackPanel"
+         Grid.Column="0"
+         Width="180"
+         Margin="0,0,20,0"
+         Orientation="Vertical">
+
+        <TextBlock 
+            x:Name="BaseFormTitle" 
+            Text="{x:Bind FormTitle, Mode=TwoWay}" 
+            Style="{StaticResource SubtitleTextBlockStyle}" />
+
+        <TextBox
+                 x:Name="NameFieldTxb"
+                 Margin="0,5,0,5"
+                 MaxLength="10"
+                 PlaceholderText="Nome"
+                 Text="{x:Bind NameField, Mode=TwoWay}" />
+        <TextBox
+                 x:Name="SurnameFieldTxb"
+                 Margin="0,5,0,5"
+                 MaxLength="10"
+                 PlaceholderText="Sobrenome"
+                 Text="{x:Bind SurnameField, Mode=TwoWay}" />
+        <TextBox
+                 x:Name="CpfFieldTxb"
+                 Margin="0,5,0,5"
+                 MaxLength="11"
+                 PlaceholderText="CPF"
+                 Text="{x:Bind CpfField, Mode=TwoWay}" />
+        <Button
+                 x:Name="BtnSend"
+                 Margin="0,5,0,0"
+                 HorizontalAlignment="Right"
+                 Style="{StaticResource AccentButtonStyle}"
+                 Content="{x:Bind ButtonContent, Mode=OneWay}"
+                 Command="{x:Bind ButtonCommand}"/>
+    </StackPanel>
+</UserControl>

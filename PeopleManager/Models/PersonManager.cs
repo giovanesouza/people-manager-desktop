@@ -1,13 +1,10 @@
-﻿using ABI.System;
+﻿using PeopleManager.Services;
+using PeopleManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.System;
-using PeopleManager.Services;
-using PeopleManager.Utils;
 
 namespace PeopleManager.Models
 {
@@ -17,7 +14,7 @@ namespace PeopleManager.Models
         private static readonly ApiClient _apiClient = new ApiClient(URL);
         private static readonly int totalNames = 5;
 
-        public static ObservableCollection<Person> DatabasePeople { get; private set; } 
+        public static ObservableCollection<Person> DatabasePeople { get; private set; }
             = new ObservableCollection<Person>();
 
 
@@ -57,6 +54,15 @@ namespace PeopleManager.Models
         {
             DatabasePeople.Add(person);
         }
+
+        public static void OrderByName()
+        {
+            var sorted = DatabasePeople.OrderBy(x => x.Name).ToList();
+            DatabasePeople = new ObservableCollection<Person>(sorted);
+
+        }
+
+
 
     }
 }
