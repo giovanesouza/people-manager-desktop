@@ -1,11 +1,10 @@
-﻿using PeopleManager.Models;
+﻿using PeopleManager.Events;
+using PeopleManager.Models;
 using PeopleManager.Services;
 using PeopleManager.Utils;
-using PeopleManager.Views.Molecules;
-using System;
+using Prism.Events;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -14,6 +13,7 @@ namespace PeopleManager.ViewModels
     public class HeaderOrganismViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private readonly IEventAggregator _eventAggregator;
         private string _registerName;
         private string _registerSurname;
         private string _registerCpf;
@@ -25,8 +25,9 @@ namespace PeopleManager.ViewModels
         public ICommand RegisterPersonCommand { get; }
         public ICommand FilterPersonCommand { get; }
 
-        public HeaderOrganismViewModel()
+        public HeaderOrganismViewModel(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
             RegisterPersonCommand = new RelayCommand(RegisterPerson);
             FilterPersonCommand = new RelayCommand(FilterPerson);
         }
@@ -83,7 +84,8 @@ namespace PeopleManager.ViewModels
             {
                 int id = PersonManager.GetPeople().Count + 1;
                 Person newPerson = new(id, RegisterName, RegisterSurname, FormatData.FormatCpf(RegisterCpf));
-                PersonManager.CreatePerson(newPerson);
+
+                _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
 
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;
@@ -146,6 +148,5 @@ namespace PeopleManager.ViewModels
             }
             return false;
         }
-
     }
 }

@@ -14,11 +14,8 @@ namespace PeopleManager.Models
         private static readonly ApiClient _apiClient = new ApiClient(URL);
         private static readonly int totalNames = 5;
 
-        public static ObservableCollection<Person> DatabasePeople { get; private set; }
-            = new ObservableCollection<Person>();
+        public static ObservableCollection<Person> DatabasePeople { get; private set; } = new();
 
-
-        // Generates random people
         private static async Task RandomRegistrationPeople()
         {
             try
@@ -39,7 +36,6 @@ namespace PeopleManager.Models
         }
 
 
-        // Returns all People
         public static ObservableCollection<Person> GetPeople()
         {
             if (DatabasePeople.Count == 0)
@@ -54,15 +50,5 @@ namespace PeopleManager.Models
         {
             DatabasePeople.Add(person);
         }
-
-        public static void OrderByName()
-        {
-            var sorted = DatabasePeople.OrderBy(x => x.Name).ToList();
-            DatabasePeople = new ObservableCollection<Person>(sorted);
-
-        }
-
-
-
     }
 }
