@@ -1,6 +1,4 @@
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.ViewModels;
-using PeopleManager.Views.Organisms;
 
 namespace PeopleManager.Views
 {
@@ -9,7 +7,6 @@ namespace PeopleManager.Views
         public Home()
         {
             this.InitializeComponent();
-            DataContext = new HomeViewModel();
         }
     }
 }

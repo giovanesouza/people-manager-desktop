@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.Models;
-using PeopleManager.ViewModels;
+using PeopleManager.Events;
+using Prism.Events;
 
 namespace PeopleManager.Views.Organisms
 {
@@ -11,28 +11,12 @@ namespace PeopleManager.Views.Organisms
             this.InitializeComponent();
         }
 
-        private void RegisterOrdination_Changed(object sender, SelectionChangedEventArgs e)
+        private void Ordination_Changed(object sender, SelectionChangedEventArgs e)
         {
-            var cbb = ComboBoxOrdination.SelectedValue as ComboBoxItem; // Cast
-            var selectedItem = cbb.Content.ToString();
-
-              switch (selectedItem)
-            {
-                case "Por Nome":
-                    PersonManager.OrderByName();
-                    //viewModel.SortPeopleBy();
-                    //var p = viewModel.People.ToArray();
-                    //_viewModel.People.;
-                    //_viewModel.People.SetSortedPeople(peopl .OrderBy(p => p.Name).ToList());
-                    break;
-                case "Por Sobrenome":
-                    //peopleListControl.SetSortedPeople(peopleListControl.People.OrderBy(p => p.Surname).ToList());
-                    break;
-                case "Padrão":
-                    //peopleListControl.SetSortedPeople(peopleListControl.People.OrderBy(p => p.Id).ToList());
-                    break;
-            }
-
+            var comboBoxItem = ComboBoxOrdination.SelectedValue as ComboBoxItem; // Cast
+            var sortBy = comboBoxItem.Content.ToString();
+            EventAggregator.Current.GetEvent<PeopleSortedEvent>().Publish(sortBy);
         }
+
     }
 }

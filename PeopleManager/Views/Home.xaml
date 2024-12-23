@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <organism:HeaderOrganism Grid.Row="0" />
-        <organism:PeopleList Grid.Row="1" x:Name="peopleListOrganism" />
+        <organism:PeopleList Grid.Row="1" />
         <organism:Footer Grid.Row="2" />
     </Grid>
 </Page>

@@ -5,10 +5,12 @@ namespace PeopleManager.Views.Organisms
 {
     public sealed partial class HeaderOrganism : UserControl
     {
+        private readonly HeaderOrganismViewModel viewModel;
         public HeaderOrganism()
         {
             this.InitializeComponent();
-            DataContext = new HeaderOrganismViewModel();
+            viewModel = App.GetService<HeaderOrganismViewModel>();
+            DataContext = viewModel;
         }
     }
 }

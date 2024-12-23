@@ -20,8 +20,8 @@ namespace PeopleManager.Views.Organisms
         public static readonly DependencyProperty NameFieldProperty =
             DependencyProperty.Register("NameField", typeof(string), typeof(BaseForm), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty SurnameFieldProperty =
-    DependencyProperty.Register("SurnameField", typeof(string), typeof(BaseForm), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty SurnameFieldProperty = 
+            DependencyProperty.Register("SurnameField", typeof(string), typeof(BaseForm), new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty CpfFieldProperty = 
             DependencyProperty.Register("CpfField", typeof(string), typeof(BaseForm), new PropertyMetadata(default(string)));

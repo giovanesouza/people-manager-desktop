@@ -7,16 +7,9 @@ namespace PeopleManager.Views
 {
     public partial class MainWindow : Window
     {
-        //private readonly CustomTitleBar customTitleBar;
-
         public MainWindow()
         {
-          this.InitializeComponent();
-            // Sets the context in the main window sharing with its descendants
-            //main.DataContext = new PeopleViewModel();
-
-            //this.ExtendsContentIntoTitleBar = true;
-            //this.SetTitleBar(customTitleBar);
+            this.InitializeComponent();
             CenterWindow();
         }
 

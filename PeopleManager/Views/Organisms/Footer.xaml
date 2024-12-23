@@ -29,13 +29,13 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-                <HyperlinkButton NavigateUri="http://github.com/giovanesouza">
+                <HyperlinkButton x:Name="GithubLink" AutomationProperties.Name="GithubLink" NavigateUri="http://github.com/giovanesouza">
                     <StackPanel Orientation="Horizontal" Spacing="10">
                         <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
                         <TextBlock Text="Github" />
                     </StackPanel>
                 </HyperlinkButton>
-                <HyperlinkButton NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
+                <HyperlinkButton x:Name="LinkedInLink" AutomationProperties.Name="LinkedInLink" NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
                     <StackPanel Orientation="Horizontal" Spacing="10">
                         <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
                         <TextBlock Text="LinkedIn" />
@@ -44,44 +44,5 @@
             </StackPanel>
 
         </Grid>
-
     </StackPanel>
-
-    <!--<StackPanel
-    MinWidth="300"
-    Background="{StaticResource AccentAcrylicBackgroundFillColorDefaultBrush}"
-    Orientation="Vertical" 
-    HorizontalAlignment="Stretch" 
-    VerticalAlignment="Stretch">
-
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="*"/>
-
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                <TextBlock Text="Developed by Giovane Souza" Padding="5" />
-            </StackPanel>
-
-            <Grid Grid.Column="1" />
-
-            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-                <HyperlinkButton NavigateUri="http://github.com/giovanesouza">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
-                        <TextBlock Text="Github" />
-                    </StackPanel>
-                </HyperlinkButton>
-                <HyperlinkButton NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
-                        <TextBlock Text="LinkedIn" />
-                    </StackPanel>
-                </HyperlinkButton>
-            </StackPanel>
-        </Grid>
-    </StackPanel>-->
 </UserControl>

@@ -21,10 +21,8 @@
             Width="200"
             Margin="0,5,0,0"
             PlaceholderText="Tipo de ordenação"
-            SelectionChanged="RegisterOrdination_Changed">
-            <!--  SelectionChanged="cbbOrdination_SelectionChanged">  -->
-
-            <ComboBoxItem x:Name="cbIDefault" Content="Padrão" />
+            SelectionChanged="Ordination_Changed">
+            <ComboBoxItem Content="Padrão" />
             <ComboBoxItem Content="Por Nome" />
             <ComboBoxItem Content="Por Sobrenome" />
         </ComboBox>
