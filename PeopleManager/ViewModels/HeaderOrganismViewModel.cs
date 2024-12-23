@@ -84,9 +84,8 @@ namespace PeopleManager.ViewModels
             {
                 int id = PersonManager.GetPeople().Count + 1;
                 Person newPerson = new(id, RegisterName, RegisterSurname, FormatData.FormatCpf(RegisterCpf));
-
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
-
+                _eventAggregator.GetEvent<PeopleSortedEvent>().Publish("Padrão");
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;
             }
@@ -136,7 +135,6 @@ namespace PeopleManager.ViewModels
                 FilterCpf = string.Empty;
             }
         }
-
 
         protected bool OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
