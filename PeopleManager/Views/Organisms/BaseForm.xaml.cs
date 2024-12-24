@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using PeopleManager.Utils;
 using System;
 using System.Windows.Input;
 
@@ -26,8 +27,14 @@ namespace PeopleManager.Views.Organisms
         public static readonly DependencyProperty CpfFieldProperty = 
             DependencyProperty.Register("CpfField", typeof(string), typeof(BaseForm), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty ButtonCommandProperty = 
-            DependencyProperty.Register("ButtonCommand", typeof(ICommand), typeof(BaseForm), new PropertyMetadata(default(Nullable)));
+        public static readonly DependencyProperty ButtonRightCommandProperty = 
+            DependencyProperty.Register("ButtonRightCommand", typeof(ICommand), typeof(BaseForm), new PropertyMetadata(default(Nullable)));
+
+        public static readonly DependencyProperty ButtonLeftCommandProperty =
+            DependencyProperty.Register("ButtonLeftCommand", typeof(ICommand), typeof(BaseForm), new PropertyMetadata(default(Nullable)));
+        
+        public static readonly DependencyProperty ButtonLeftVisibilityProperty =
+            DependencyProperty.Register("ButtonLeftVisibility", typeof(Visibility), typeof(BaseForm), new PropertyMetadata(default(Visibility)));
 
         public string FormTitle
         {
@@ -59,11 +66,27 @@ namespace PeopleManager.Views.Organisms
             set => SetValue(CpfFieldProperty, value);
         }
 
-        public ICommand ButtonCommand
+        public ICommand ButtonRightCommand
         {
-            get => (ICommand)GetValue(ButtonCommandProperty); 
-            set => SetValue(ButtonCommandProperty, value); 
+            get => (ICommand)GetValue(ButtonRightCommandProperty); 
+            set => SetValue(ButtonRightCommandProperty, value); 
+        }
+        
+        public ICommand ButtonLeftCommand
+        {
+            get => (ICommand)GetValue(ButtonLeftCommandProperty); 
+            set => SetValue(ButtonLeftCommandProperty, value); 
+        }
+        
+        public Visibility ButtonLeftVisibility
+        {
+            get => (Visibility)GetValue(ButtonLeftVisibilityProperty); 
+            set => SetValue(ButtonLeftVisibilityProperty, value); 
         }
 
+        private void FormatCpf_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (sender is TextBox textBox) textBox.Text = FormatData.FormatCpf(textBox.Text);
+        }
     }
 }

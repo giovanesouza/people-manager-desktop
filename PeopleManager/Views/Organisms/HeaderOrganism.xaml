@@ -30,7 +30,8 @@
             NameField="{Binding RegisterName, Mode=TwoWay}"
             SurnameField="{Binding RegisterSurname, Mode=TwoWay}"
             CpfField="{Binding RegisterCpf, Mode=TwoWay}"
-            ButtonCommand="{Binding RegisterPersonCommand}"  
+            ButtonLeftVisibility="Collapsed"
+            ButtonRightCommand="{Binding RegisterPersonCommand}"  
             Grid.Column="0" />
         <local:BaseForm
             x:Name="FilterForm"
@@ -39,9 +40,11 @@
             NameField="{Binding FilterName, Mode=TwoWay}"
             SurnameField="{Binding FilterSurname, Mode=TwoWay}"
             CpfField="{Binding FilterCpf, Mode=TwoWay}"
-            ButtonCommand="{Binding FilterPersonCommand}" 
+            ButtonLeftVisibility="Visible"
+            ButtonLeftCommand="{Binding ClearFilterButtonCommand}"
+            ButtonRightCommand="{Binding FilterPersonCommand}" 
             Grid.Column="1" />
-        <local:OrderPeople Grid.Column="2" />
+        <local:OrderPeople x:Name="SortPeople" Grid.Column="2" />
         <ToggleSwitch 
             Grid.Column="3" 
             HorizontalAlignment="Right"

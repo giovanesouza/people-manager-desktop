@@ -1,7 +1,6 @@
 ﻿using PeopleManager.Events;
 using PeopleManager.Models;
 using PeopleManager.Services;
-using PeopleManager.Utils;
 using Prism.Events;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +9,7 @@ using System.Windows.Input;
 
 namespace PeopleManager.ViewModels
 {
-    public class HeaderOrganismViewModel : INotifyPropertyChanged
+    public partial class HeaderOrganismViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private readonly IEventAggregator _eventAggregator;
@@ -24,12 +23,14 @@ namespace PeopleManager.ViewModels
 
         public ICommand RegisterPersonCommand { get; }
         public ICommand FilterPersonCommand { get; }
+        public ICommand ClearFilterButtonCommand { get; }
 
         public HeaderOrganismViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
             RegisterPersonCommand = new RelayCommand(RegisterPerson);
             FilterPersonCommand = new RelayCommand(FilterPerson);
+            ClearFilterButtonCommand = new RelayCommand(ClearFilterFields);
         }
 
         #region Properties
@@ -83,7 +84,7 @@ namespace PeopleManager.ViewModels
             if (CanRegister)
             {
                 int id = PersonManager.GetPeople().Count + 1;
-                Person newPerson = new(id, RegisterName, RegisterSurname, FormatData.FormatCpf(RegisterCpf));
+                Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
                 _eventAggregator.GetEvent<PeopleSortedEvent>().Publish("Padrão");
                 ClearBaseFormFields("RegisterForm");
@@ -93,36 +94,31 @@ namespace PeopleManager.ViewModels
 
         public void FilterPerson(object obj)
         {
-            //PersonManager.OrderByName();
-            if(UpdateCanFilter())
+            var filterPeople = new FilterPeople
             {
-                _ = _filterName;
-                _ = _filterSurname;
-                //ClearBaseFormFields("FilterForm");
-            }
+                Name = FilterName,
+                SurName = FilterSurname,
+                CPF = FilterCpf
+            };
+            _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(filterPeople);
         }
 
         public void UpdateCanRegister()
         {
             CanRegister = !string.IsNullOrEmpty(RegisterName) &&
                 !string.IsNullOrEmpty(RegisterSurname) &&
-                !string.IsNullOrEmpty(RegisterCpf);
+                (!string.IsNullOrEmpty(RegisterCpf) && RegisterCpf.Length == 14);
         }
 
-        public bool UpdateCanFilter()
+        public void ClearFilterFields(object obj)
         {
-            if(!string.IsNullOrEmpty(FilterName) ||
-                !string.IsNullOrEmpty(FilterSurname) ||
-                !string.IsNullOrEmpty(FilterCpf))
-            {
-                return true;
-            }
-            return false;
+            ClearBaseFormFields("FilterForm");
+            _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(new FilterPeople { Name = "", SurName = "", CPF = "" });
         }
 
         public void ClearBaseFormFields(string baseFormName)
         {
-            if(baseFormName == "RegisterForm")
+            if (baseFormName == "RegisterForm")
             {
                 RegisterName = string.Empty;
                 RegisterSurname = string.Empty;
