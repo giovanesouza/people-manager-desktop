@@ -23,14 +23,14 @@
     </UserControl.Resources>
 
 
-    <!-- List of people -->
+    <!-- People list -->
     <Grid Margin="10" BorderThickness="1" BorderBrush="#DDD" MaxHeight="350">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- List People: Header -->
+        <!-- People list: Header -->
         <Grid Grid.Row="0" Background="#DDD">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350*" MinWidth="200" />
@@ -38,17 +38,26 @@
                 <ColumnDefinition Width="250*" MinWidth="200" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Nome Completo" Style="{StaticResource BodyTextBlockStyle}"
-                       Margin="0,0,5,0" Grid.Column="0" FontWeight="Medium" />
-            <TextBlock Text="CPF" Style="{StaticResource BodyTextBlockStyle}"
-                       Margin="0,0,5,0" Grid.Column="1" FontWeight="Medium" />
-
-            <TextBlock Text="Ações" Style="{StaticResource BodyTextBlockStyle}"
-                       Margin="0,0,5,0" Grid.Column="2"
-                     HorizontalTextAlignment="Center" FontWeight="Medium"/>
+            <TextBlock 
+                Text="Nome Completo" 
+                Style="{StaticResource BodyTextBlockStyle}" 
+                Margin="0,0,5,0" 
+                Grid.Column="0" 
+                FontWeight="Medium" />
+            <TextBlock 
+                Text="CPF" 
+                Style="{StaticResource BodyTextBlockStyle}"
+                Margin="0,0,5,0" 
+                Grid.Column="1" 
+                FontWeight="Medium" />
+            <TextBlock 
+                Text="Ações" 
+                Style="{StaticResource BodyTextBlockStyle}"
+                Margin="0,0,5,0" Grid.Column="2"
+                HorizontalTextAlignment="Center" FontWeight="Medium"/>
         </Grid>
 
-        <!-- List People Body -->
+        <!-- People List: Body -->
         <ScrollViewer Grid.Row="1"
                 VerticalAlignment="Top"
                 VerticalScrollBarVisibility="Auto"
@@ -64,10 +73,16 @@
                                     <ColumnDefinition Width="250*" MinWidth="200" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="{Binding Fullname}" Style="{StaticResource BodyTextBlockStyle}"
-                                    Grid.Column="0" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Cpf}" Style="{StaticResource BodyTextBlockStyle}"
-                                    Grid.Column="1" VerticalAlignment="Center" />
+                                <TextBlock 
+                                    Text="{Binding Fullname}" 
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Grid.Column="0" 
+                                    VerticalAlignment="Center" />
+                                <TextBlock 
+                                    Text="{Binding Cpf}" 
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Grid.Column="1" 
+                                    VerticalAlignment="Center" />
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
                                     <Button x:Name="PersonEdit" 
@@ -99,6 +114,5 @@
                 </ItemsControl>
             </Border>
         </ScrollViewer>
-
     </Grid>
 </UserControl>

@@ -10,7 +10,7 @@
 
     <StackPanel x:Name="BaseFormStackPanel"
          Grid.Column="0"
-         Width="180"
+         Width="230"
          Margin="0,0,20,0"
          Orientation="Vertical">
 
@@ -22,13 +22,13 @@
         <TextBox
                  x:Name="NameFieldTxb"
                  Margin="0,5,0,5"
-                 MaxLength="10"
+                 MaxLength="15"
                  PlaceholderText="Nome"
                  Text="{x:Bind NameField, Mode=TwoWay}" />
         <TextBox
                  x:Name="SurnameFieldTxb"
                  Margin="0,5,0,5"
-                 MaxLength="10"
+                 MaxLength="15"
                  PlaceholderText="Sobrenome"
                  Text="{x:Bind SurnameField, Mode=TwoWay}" />
         <TextBox
@@ -36,13 +36,21 @@
                  Margin="0,5,0,5"
                  MaxLength="11"
                  PlaceholderText="CPF"
-                 Text="{x:Bind CpfField, Mode=TwoWay}" />
-        <Button
+                 Text="{x:Bind CpfField, Mode=TwoWay}"
+                 KeyUp="FormatCpf_KeyUp"/>
+        <Grid>
+            <Button Margin="0,5,0,0" 
+                    HorizontalAlignment="Left"
+                    Visibility="{x:Bind ButtonLeftVisibility, Mode=TwoWay}" 
+                    Content="LIMPAR CAMPOS"
+                    Command="{x:Bind ButtonLeftCommand}"/>
+            <Button
                  x:Name="BtnSend"
                  Margin="0,5,0,0"
                  HorizontalAlignment="Right"
                  Style="{StaticResource AccentButtonStyle}"
                  Content="{x:Bind ButtonContent, Mode=OneWay}"
-                 Command="{x:Bind ButtonCommand}"/>
+                 Command="{x:Bind ButtonRightCommand}" />
+        </Grid>
     </StackPanel>
 </UserControl>
