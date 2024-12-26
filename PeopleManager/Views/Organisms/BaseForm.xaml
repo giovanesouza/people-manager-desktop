@@ -16,6 +16,7 @@
 
         <TextBlock 
             x:Name="BaseFormTitle" 
+            Foreground="{ThemeResource Color-Blue}"
             Text="{x:Bind FormTitle, Mode=TwoWay}" 
             Style="{StaticResource SubtitleTextBlockStyle}" />
 
@@ -41,6 +42,8 @@
         <Grid>
             <Button Margin="0,5,0,0" 
                     HorizontalAlignment="Left"
+                    Foreground="{ThemeResource Color-WhiteButton}"
+                    Background="{ThemeResource BG-SecondaryButton}"
                     Visibility="{x:Bind ButtonLeftVisibility, Mode=TwoWay}" 
                     Content="LIMPAR CAMPOS"
                     Command="{x:Bind ButtonLeftCommand}"/>
@@ -48,7 +51,8 @@
                  x:Name="BtnSend"
                  Margin="0,5,0,0"
                  HorizontalAlignment="Right"
-                 Style="{StaticResource AccentButtonStyle}"
+                 Foreground="{ThemeResource Color-WhiteButton}"
+                 Background="{ThemeResource BG-PrimaryButton}"
                  Content="{x:Bind ButtonContent, Mode=OneWay}"
                  Command="{x:Bind ButtonRightCommand}" />
         </Grid>

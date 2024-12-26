@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel
-        Background="{StaticResource AccentAcrylicBackgroundFillColorDefaultBrush}"
+        Background="{ThemeResource BG-Blue}"
         CornerRadius="5"
         Margin="5,0,5,0"
         HorizontalAlignment="Stretch" 
@@ -25,24 +25,39 @@
             <Grid Grid.Column="1" />
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <TextBlock Text="Developed by Giovane Souza" Padding="5" />
+                <TextBlock 
+                    Text="Developed by Giovane Souza" 
+                    Foreground="{ThemeResource Color-Dark}" 
+                    FontWeight="SemiBold"
+                    Padding="5" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
-                <HyperlinkButton x:Name="GithubLink" AutomationProperties.Name="GithubLink" NavigateUri="http://github.com/giovanesouza">
+                <HyperlinkButton 
+                    x:Name="GithubLink" 
+                    AutomationProperties.Name="GithubLink" 
+                    NavigateUri="http://github.com/giovanesouza">
+                    
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
-                        <TextBlock Text="Github" />
+                        <Image Height="20" Source="/Assets/github_black.png" />
+                        <TextBlock Text="Github" Foreground="{ThemeResource Color-Dark}" />
                     </StackPanel>
+                    
                 </HyperlinkButton>
-                <HyperlinkButton x:Name="LinkedInLink" AutomationProperties.Name="LinkedInLink" NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
+                
+                <HyperlinkButton 
+                    x:Name="LinkedInLink" 
+                    AutomationProperties.Name="LinkedInLink" 
+                    NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
+                    
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/Dtafalonso-Win-10x-People.128.png" />
-                        <TextBlock Text="LinkedIn" />
+                        <Image Height="20" Source="/Assets/linkedin_blue.png" />
+                        <TextBlock Text="LinkedIn" Foreground="{ThemeResource Color-Dark}" />
                     </StackPanel>
+                    
                 </HyperlinkButton>
             </StackPanel>
-
+            
         </Grid>
     </StackPanel>
 </UserControl>

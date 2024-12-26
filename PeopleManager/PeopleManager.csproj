@@ -14,6 +14,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Themes\ThemeResources.xaml" />
+    <None Remove="Views\Atoms\ThemeToggle.xaml" />
     <None Remove="Views\Home.xaml" />
     <None Remove="Views\Molecules\SocialMedia.xaml" />
     <None Remove="Views\Organisms\BaseForm.xaml" />
@@ -91,6 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Molecules\RegisterForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Themes\ThemeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Atoms\ThemeToggle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
