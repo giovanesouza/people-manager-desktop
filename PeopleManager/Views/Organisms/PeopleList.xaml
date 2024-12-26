@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <!-- People list: Header -->
-        <Grid Grid.Row="0" Background="#DDD">
+        <Grid Grid.Row="0" Background="{ThemeResource BG-Blue}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350*" MinWidth="200" />
                 <ColumnDefinition Width="200*" MinWidth="150" />
@@ -40,21 +40,25 @@
 
             <TextBlock 
                 Text="Nome Completo" 
-                Style="{StaticResource BodyTextBlockStyle}" 
+                Foreground="{ThemeResource Color-Dark}"
                 Margin="0,0,5,0" 
                 Grid.Column="0" 
-                FontWeight="Medium" />
+                Padding="5"
+                FontWeight="SemiBold" />
             <TextBlock 
                 Text="CPF" 
-                Style="{StaticResource BodyTextBlockStyle}"
+                Foreground="{ThemeResource Color-Dark}"
+                Padding="5"
                 Margin="0,0,5,0" 
-                Grid.Column="1" 
-                FontWeight="Medium" />
+                Grid.Column="1"
+                FontWeight="SemiBold" />
             <TextBlock 
                 Text="Ações" 
-                Style="{StaticResource BodyTextBlockStyle}"
+                Foreground="{ThemeResource Color-Dark}"
+                Padding="5"
                 Margin="0,0,5,0" Grid.Column="2"
-                HorizontalTextAlignment="Center" FontWeight="Medium"/>
+                HorizontalTextAlignment="Center" 
+                FontWeight="SemiBold" />
         </Grid>
 
         <!-- People List: Body -->
@@ -85,10 +89,13 @@
                                     VerticalAlignment="Center" />
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
-                                    <Button x:Name="PersonEdit" 
+                                    <Button x:Name="EditPerson" 
                                             Tag="{Binding}" 
-                                            AutomationProperties.Name="PersonEdit"
-                                            Margin="2" Style="{StaticResource AccentButtonStyle}">
+                                            Foreground="{ThemeResource Color-Black}"
+                                            Background="{ThemeResource BG-Warning}"
+                                            FontWeight="SemiBold"
+                                            Margin="2"
+                                            AutomationProperties.Name="EditPerson">
                                         <!--Click="btnEdit_Click"-->
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,5,0" />
@@ -96,10 +103,13 @@
                                         </StackPanel>
                                     </Button>
 
-                                    <Button x:Name="PersonUpdate" 
+                                    <Button x:Name="DeletePerson" 
                                             Tag="{Binding}" 
-                                            Margin="2" Style="{StaticResource AccentButtonStyle}"
-                                            AutomationProperties.Name="PersonUpdate">
+                                            Foreground="{ThemeResource Color-WhiteButton}"
+                                            Background="{ThemeResource BG-Danger}"
+                                            FontWeight="SemiBold"
+                                            Margin="2"
+                                            AutomationProperties.Name="DeletePerson">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Delete" Margin="0,0,5,0" />
                                             <!--Foreground="#F00"/>-->

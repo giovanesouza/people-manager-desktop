@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
+using PeopleManager.Utils;
 using PeopleManager.ViewModels;
 using PeopleManager.Views;
 using Prism.Events;
@@ -10,6 +11,8 @@ namespace PeopleManager
     public partial class App : Application
     {
         public static IServiceProvider Services { get; private set; }
+        public static Window MainWindow { get; private set; }
+
         public App()
         {
             this.InitializeComponent();
@@ -32,10 +35,13 @@ namespace PeopleManager
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
-            m_window.Activate();
-        }
+            var savedTheme = ThemeSettings.LoadUserPreferredTheme();
+            MainWindow = new MainWindow();
 
-        private Window m_window;
+            if (MainWindow.Content is FrameworkElement rootElement)
+                rootElement.RequestedTheme = savedTheme == "Dark" ? ElementTheme.Dark : ElementTheme.Light;
+
+            MainWindow.Activate();
+        }
     }
 }

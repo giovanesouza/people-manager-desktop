@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:PeopleManager.Views.Organisms"
+    xmlns:atom="using:PeopleManager.Views.Atoms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -33,6 +34,7 @@
             ButtonLeftVisibility="Collapsed"
             ButtonRightCommand="{Binding RegisterPersonCommand}"  
             Grid.Column="0" />
+        
         <local:BaseForm
             x:Name="FilterForm"
             FormTitle="FILTRO" 
@@ -44,23 +46,10 @@
             ButtonLeftCommand="{Binding ClearFilterButtonCommand}"
             ButtonRightCommand="{Binding FilterPersonCommand}" 
             Grid.Column="1" />
+        
         <local:OrderPeople x:Name="SortPeople" Grid.Column="2" />
-        <ToggleSwitch 
-            Grid.Column="3" 
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            OnContent="Dark"
-            OffContent="Light">
-            <!--<ToggleSwitch.Resources>
-                <ResourceDictionary.ThemeDictionary>
-                    <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="ToggleSitchFillOn" Color="#F00" />
-                    </ResourceDictionary>
-                    <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="ToggleSitchFillOn" Color="#F00" />
-                    </ResourceDictionary>
-                </ResourceDictionary.ThemeDictionary>
-            </ToggleSwitch.Resources>-->
-        </ToggleSwitch>
+        
+        <atom:ThemeToggle Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" />
+        
     </Grid>
 </UserControl>

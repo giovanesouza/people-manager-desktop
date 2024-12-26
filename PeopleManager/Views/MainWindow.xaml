@@ -12,7 +12,7 @@
     mc:Ignorable="d"
     Title="People Manager">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource BG-Window}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>

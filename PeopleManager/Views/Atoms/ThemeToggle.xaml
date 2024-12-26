@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="PeopleManager.Views.Atoms.ThemeToggle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PeopleManager.Views.Atoms"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ToggleSwitch 
+        x:Name="ThemeToggleControl"
+        OnContent="Dark" 
+        OffContent="Light"
+        Toggled="ThemeToggle_Toggled"
+        Loaded="ChangeToggleIsOn_Loaded">
+        <ToggleSwitch.Resources>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#0D6EFD" />
+                <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="#307D858C" />
+            </ResourceDictionary>
+        </ToggleSwitch.Resources>
+    </ToggleSwitch>
+</UserControl>
