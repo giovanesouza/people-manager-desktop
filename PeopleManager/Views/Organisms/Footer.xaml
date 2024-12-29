@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:PeopleManager.Views.Organisms"
+    xmlns:resources="using:PeopleManager.Utils"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -26,7 +27,7 @@
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock 
-                    Text="Developed by Giovane Souza" 
+                    Text="{resources:ResourceExtension Key=DevelopedBy}" 
                     Foreground="{ThemeResource Color-Dark}" 
                     FontWeight="SemiBold"
                     Padding="5" />

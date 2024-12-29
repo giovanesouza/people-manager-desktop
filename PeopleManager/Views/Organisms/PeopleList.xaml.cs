@@ -8,17 +8,20 @@ using PeopleManager.Views.Organisms.ControlPages;
 using Prism.Events;
 using System;
 using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 namespace PeopleManager.Views.Organisms
 {
     public sealed partial class PeopleList : UserControl
     {
         private readonly PeopleListViewModel viewModel;
+        private readonly ResourceLoader resourceLoader;
         public PeopleList()
         {
             this.InitializeComponent();
             viewModel = App.GetService<PeopleListViewModel>();
             DataContext = viewModel;
+            resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
             EventAggregator.Current.GetEvent<PeopleSortedEvent>().Subscribe(SortPeopleBy);
             EventAggregator.Current.GetEvent<FilterPeopleEvent>().Subscribe(FilterPeopleToList);
         }
@@ -33,7 +36,7 @@ namespace PeopleManager.Views.Organisms
 
             if(string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(SurName) && string.IsNullOrEmpty(CPF))
             {
-                DialogTemplate.ShowDialog(this.XamlRoot, "Preencha pelo menos um dos campos para filtrar registros.");
+                DialogTemplate.ShowDialog(this.XamlRoot, resourceLoader.GetString("EmptyFieldsDialogMessage"));
             } 
             else if (!string.IsNullOrEmpty(Name) || !string.IsNullOrEmpty(SurName) || !string.IsNullOrEmpty(CPF))
             {
@@ -44,11 +47,6 @@ namespace PeopleManager.Views.Organisms
 
                 if (filteredPerson != null)
                     dataGridPeopleList.ItemsSource = filteredPerson;
-                //else
-                //{
-                //    dataGridPeopleList.ItemsSource = viewModel.People;
-                //    DialogTemplate.ShowDialog(this.XamlRoot, "Nenhum registro localizado.");
-                //}
             }
             else dataGridPeopleList.ItemsSource = viewModel.People;
         }
@@ -57,25 +55,34 @@ namespace PeopleManager.Views.Organisms
         {
             var allPeople = viewModel.People;
 
+            if (sortBy == resourceLoader.GetString("PlaceholderName"))
+                dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Name).ToList();
+            else if (sortBy == resourceLoader.GetString("PlaceholderLastName"))
+                dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Surname).ToList();
+            else
+                dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Id).ToList();
+
+            /*
             _ = sortBy switch
             {
                 "Por Nome" => dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Name).ToList(),
                 "Por Sobrenome" => dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Surname).ToList(),
                 _ => dataGridPeopleList.ItemsSource = allPeople.OrderBy(p => p.Id).ToList()
             };
+            */
         }
 
         private async void DeletePerson_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is Person person)
             {
-                var dialog = new ContentDialogContent
+                var dialog = new ContentDialog
                 {
                     XamlRoot = this.XamlRoot,
-                    Title = "Você tem certeza que deseja excluir este cadastro?",
+                    Title = resourceLoader.GetString("DeleteDialogTitle"),
                     Content = new TextBlock { Text = $"{person.Fullname} - {person.Cpf}" },
-                    PrimaryButtonText = "EXCLUIR",
-                    CloseButtonText = "CANCELAR",
+                    PrimaryButtonText = resourceLoader.GetString("DeleteButton"),
+                    CloseButtonText = resourceLoader.GetString("CancelButton"),
                     PrimaryButtonStyle = (Style)Application.Current.Resources["ButtonDeleteStyle"],
                     CloseButtonStyle = (Style)Application.Current.Resources["ButtonCloseCancelStyle"],
                     Style = (Style)Application.Current.Resources["DialogStyle"]
