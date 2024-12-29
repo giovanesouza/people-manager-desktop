@@ -8,10 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
-    <UserControl.Resources>
-        <!-- x:Key = Style="{StaticResource StyleName (It's similar to CSS classes)}
-        TargetType="Controle" -->
+    <!--<UserControl.Resources>
+        --><!-- x:Key = Style="{StaticResource StyleName (It's similar to CSS classes)}
+        TargetType="Controle" --><!--
         <Style x:Key="BodyTextBlockStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#000"/>
             <Setter Property="Padding" Value="5"/>
@@ -20,7 +19,7 @@
         <Style x:Key="ItemGridStyle" TargetType="Grid">
             <Setter Property="Padding" Value="5,5,0,0"/>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
 
 
     <!-- People list -->
@@ -70,7 +69,7 @@
                 <ItemsControl x:Name="dataGridPeopleList" ItemsSource="{Binding People}" Margin="5" Padding="2">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Style="{StaticResource ItemGridStyle}">
+                            <Grid Padding="5,5,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="350*" MinWidth="200" />
                                     <ColumnDefinition Width="200*" MinWidth="150" />
@@ -78,14 +77,16 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock 
-                                    Text="{Binding Fullname}" 
-                                    Style="{StaticResource BodyTextBlockStyle}"
                                     Grid.Column="0" 
+                                    Text="{Binding Fullname}" 
+                                    Foreground="{ThemeResource Color-White}"
+                                    Padding="5"
                                     VerticalAlignment="Center" />
                                 <TextBlock 
-                                    Text="{Binding Cpf}" 
-                                    Style="{StaticResource BodyTextBlockStyle}"
                                     Grid.Column="1" 
+                                    Text="{Binding Cpf}" 
+                                    Foreground="{ThemeResource Color-White}"
+                                    Padding="5"
                                     VerticalAlignment="Center" />
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
@@ -95,8 +96,8 @@
                                             Background="{ThemeResource BG-Warning}"
                                             FontWeight="SemiBold"
                                             Margin="2"
-                                            AutomationProperties.Name="EditPerson">
-                                        <!--Click="btnEdit_Click"-->
+                                            AutomationProperties.Name="EditPerson"
+                                            Click="EditPerson_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,5,0" />
                                             <TextBlock Text="Editar"/>
@@ -109,10 +110,10 @@
                                             Background="{ThemeResource BG-Danger}"
                                             FontWeight="SemiBold"
                                             Margin="2"
-                                            AutomationProperties.Name="DeletePerson">
+                                            AutomationProperties.Name="DeletePerson" 
+                                            Click="DeletePerson_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="Delete" Margin="0,0,5,0" />
-                                            <!--Foreground="#F00"/>-->
                                             <TextBlock Text="Excluir"/>
                                         </StackPanel>
                                     </Button>
