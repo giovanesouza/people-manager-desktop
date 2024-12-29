@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:PeopleManager.Views.Organisms"
     xmlns:atom="using:PeopleManager.Views.Atoms"
+    xmlns:resources="using:PeopleManager.Utils"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -26,8 +27,8 @@
 
         <local:BaseForm
             x:Name="RegisterForm"
-            FormTitle="CADASTRO" 
-            ButtonContent="CADASTRO"
+            FormTitle="{resources:ResourceExtension Key=RegisterTitle}" 
+            ButtonContent="{resources:ResourceExtension Key=RegisterButton}"
             NameField="{Binding RegisterName, Mode=TwoWay}"
             SurnameField="{Binding RegisterSurname, Mode=TwoWay}"
             CpfField="{Binding RegisterCpf, Mode=TwoWay}"
@@ -37,8 +38,8 @@
         
         <local:BaseForm
             x:Name="FilterForm"
-            FormTitle="FILTRO" 
-            ButtonContent="FILTRAR"
+            FormTitle="{resources:ResourceExtension Key=FilterTitle}" 
+            ButtonContent="{resources:ResourceExtension Key=FilterButton}"
             NameField="{Binding FilterName, Mode=TwoWay}"
             SurnameField="{Binding FilterSurname, Mode=TwoWay}"
             CpfField="{Binding FilterCpf, Mode=TwoWay}"

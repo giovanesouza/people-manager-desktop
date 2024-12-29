@@ -4,11 +4,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PeopleManager.Views.Organisms"
+    xmlns:resources="using:PeopleManager.Utils"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel x:Name="BaseFormStackPanel"
+    <StackPanel 
+        x:Name="BaseFormStackPanel"
          Grid.Column="0"
          Width="230"
          Margin="0,0,20,0"
@@ -16,27 +18,27 @@
 
         <TextBlock 
             x:Name="BaseFormTitle" 
-            Foreground="{ThemeResource Color-Blue}"
             Text="{x:Bind FormTitle, Mode=TwoWay}" 
+            Foreground="{ThemeResource Color-Blue}"
             Style="{StaticResource SubtitleTextBlockStyle}" />
 
         <TextBox
                  x:Name="NameFieldTxb"
                  Margin="0,5,0,5"
                  MaxLength="15"
-                 PlaceholderText="Nome"
+                 PlaceholderText="{resources:ResourceExtension Key=PlaceholderName}"
                  Text="{x:Bind NameField, Mode=TwoWay}" />
         <TextBox
                  x:Name="SurnameFieldTxb"
                  Margin="0,5,0,5"
                  MaxLength="15"
-                 PlaceholderText="Sobrenome"
+                 PlaceholderText="{resources:ResourceExtension Key=PlaceholderLastName}"
                  Text="{x:Bind SurnameField, Mode=TwoWay}" />
         <TextBox
                  x:Name="CpfFieldTxb"
                  Margin="0,5,0,5"
                  MaxLength="11"
-                 PlaceholderText="CPF"
+                 PlaceholderText="{resources:ResourceExtension Key=PlaceholderSocialSecurityNumber}"
                  Text="{x:Bind CpfField, Mode=TwoWay}"
                  KeyUp="FormatCpf_KeyUp"/>
         <Grid>
@@ -45,7 +47,7 @@
                     Foreground="{ThemeResource Color-WhiteButton}"
                     Background="{ThemeResource BG-SecondaryButton}"
                     Visibility="{x:Bind ButtonLeftVisibility, Mode=TwoWay}" 
-                    Content="LIMPAR CAMPOS"
+                    Content="{resources:ResourceExtension Key=ClearButton}"
                     Command="{x:Bind ButtonLeftCommand}"/>
             <Button
                  x:Name="BtnSend"

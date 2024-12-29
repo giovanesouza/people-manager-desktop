@@ -8,9 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:organisms="using:PeopleManager.Views.Organisms"
     xmlns:views="using:PeopleManager.Views"
+    xmlns:resources="using:PeopleManager.Utils"
     x:Name="mainWindow"
     mc:Ignorable="d"
-    Title="People Manager">
+    Title="{resources:ResourceExtension Key=AppTitle}">
 
     <Grid Background="{ThemeResource BG-Window}">
         <Grid.RowDefinitions>
