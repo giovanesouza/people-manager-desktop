@@ -3,11 +3,10 @@ using System.ComponentModel;
 
 namespace PeopleManager.Models
 {
-    // INotifyPropertyChanged - Identifica as mudanças no modelo
     public partial class Person : INotifyPropertyChanged
     {
         #region Fields
-        private int _id;
+        private string _id;
         private string _name;
         private string _surname;
         private string _fullname;
@@ -17,7 +16,7 @@ namespace PeopleManager.Models
         #endregion
 
         #region Properties
-        public int Id
+        public string Id
         {
             get { return _id; }
             set
@@ -98,7 +97,7 @@ namespace PeopleManager.Models
         }
         #endregion
 
-        public Person(int id, string name, string surname, string cpf)
+        public Person(string id, string name, string surname, string cpf)
         {
             Id = id;
             Name = name;
@@ -109,15 +108,9 @@ namespace PeopleManager.Models
         }
 
 
-        public Person Clone()
-        {
-            return (Person)this.MemberwiseClone();
-        }
-
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

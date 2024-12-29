@@ -39,7 +39,7 @@
                     NavigateUri="http://github.com/giovanesouza">
                     
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/github_black.png" />
+                        <Image Height="20" Source="ms-appx:///Assets/Icons/github_black.png" />
                         <TextBlock Text="Github" Foreground="{ThemeResource Color-Dark}" />
                     </StackPanel>
                     
@@ -51,7 +51,7 @@
                     NavigateUri="https://www.linkedin.com/in/developergiovanesouza/">
                     
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Image Height="20" Source="/Assets/linkedin_blue.png" />
+                        <Image Height="20" Source="ms-appx:///Assets/Icons/linkedin_blue.png" />
                         <TextBlock Text="LinkedIn" Foreground="{ThemeResource Color-Dark}" />
                     </StackPanel>
                     

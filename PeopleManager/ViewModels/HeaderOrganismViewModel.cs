@@ -1,6 +1,7 @@
 ﻿using PeopleManager.Events;
 using PeopleManager.Models;
 using PeopleManager.Services;
+using PeopleManager.Utils;
 using Prism.Events;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,7 +84,8 @@ namespace PeopleManager.ViewModels
             UpdateCanRegister();
             if (CanRegister)
             {
-                int id = PersonManager.GetPeople().Count + 1;
+                //int id = PersonManager.GetPeople().Count + 1;
+                string id = IdGenerator.GenerateId();
                 Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
                 _eventAggregator.GetEvent<PeopleSortedEvent>().Publish("Padrão");
@@ -100,7 +102,11 @@ namespace PeopleManager.ViewModels
                 SurName = FilterSurname,
                 CPF = FilterCpf
             };
-            _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(filterPeople);
+
+            if (!string.IsNullOrEmpty(FilterName) || !string.IsNullOrEmpty(FilterSurname) || !string.IsNullOrEmpty(FilterCpf))
+                _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(filterPeople);
+            else
+                _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(new FilterPeople { Name = "", SurName = "", CPF = "" });
         }
 
         public void UpdateCanRegister()
@@ -113,7 +119,6 @@ namespace PeopleManager.ViewModels
         public void ClearFilterFields(object obj)
         {
             ClearBaseFormFields("FilterForm");
-            _eventAggregator.GetEvent<FilterPeopleEvent>().Publish(new FilterPeople { Name = "", SurName = "", CPF = "" });
         }
 
         public void ClearBaseFormFields(string baseFormName)

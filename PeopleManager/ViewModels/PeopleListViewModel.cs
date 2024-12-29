@@ -14,6 +14,8 @@ namespace PeopleManager.ViewModels
         {
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<PersonAddedEvent>().Subscribe(AddPersonToList);
+            _eventAggregator.GetEvent<DeletePersonEvent>().Subscribe(RemovePersonFromList);
+            _eventAggregator.GetEvent<UpdatePersonEvent>().Subscribe(UpdatePerson);
             People = PersonManager.GetPeople();
         }
 
@@ -21,5 +23,16 @@ namespace PeopleManager.ViewModels
         {
             PersonManager.CreatePerson(person);
         }
+
+        private void RemovePersonFromList(string id)
+        {
+            PersonManager.DeletePerson(id);
+        }
+
+        private void UpdatePerson(Person person)
+        {
+            if (person != null) PersonManager.UpdatePerson(person);
+        }
+
     }
 }
