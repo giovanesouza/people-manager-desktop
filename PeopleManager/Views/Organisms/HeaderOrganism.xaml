@@ -2,12 +2,12 @@
 <UserControl
     x:Class="PeopleManager.Views.Organisms.HeaderOrganism"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:PeopleManager.Views.Organisms"
-    xmlns:atom="using:PeopleManager.Views.Atoms"
-    xmlns:resources="using:PeopleManager.Utils"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resource="using:PeopleManager.Common"
+    xmlns:atom="using:PeopleManager.Views.Atoms"
+    xmlns:local="using:PeopleManager.Views.Organisms"
     mc:Ignorable="d">
 
     <Grid
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <!--<ColumnDefinition Width="*" />-->
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -27,8 +27,8 @@
 
         <local:BaseForm
             x:Name="RegisterForm"
-            FormTitle="{resources:ResourceExtension Key=RegisterTitle}" 
-            ButtonContent="{resources:ResourceExtension Key=RegisterButton}"
+            FormTitle="{resource:ResourceExtension Key=RegisterTitle}" 
+            ButtonContent="{resource:ResourceExtension Key=RegisterButton}"
             NameField="{Binding RegisterName, Mode=TwoWay}"
             SurnameField="{Binding RegisterSurname, Mode=TwoWay}"
             CpfField="{Binding RegisterCpf, Mode=TwoWay}"
@@ -38,8 +38,8 @@
         
         <local:BaseForm
             x:Name="FilterForm"
-            FormTitle="{resources:ResourceExtension Key=FilterTitle}" 
-            ButtonContent="{resources:ResourceExtension Key=FilterButton}"
+            FormTitle="{resource:ResourceExtension Key=FilterTitle}" 
+            ButtonContent="{resource:ResourceExtension Key=FilterButton}"
             NameField="{Binding FilterName, Mode=TwoWay}"
             SurnameField="{Binding FilterSurname, Mode=TwoWay}"
             CpfField="{Binding FilterCpf, Mode=TwoWay}"
@@ -47,10 +47,11 @@
             ButtonLeftCommand="{Binding ClearFilterButtonCommand}"
             ButtonRightCommand="{Binding FilterPersonCommand}" 
             Grid.Column="1" />
-        
-        <local:OrderPeople x:Name="SortPeople" Grid.Column="2" />
-             
-        <atom:ThemeToggle Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" />
+
+        <StackPanel Grid.Column="2" x:Name="SortAndToggleStackPanel" Orientation="Horizontal" Spacing="10">
+            <local:OrderPeople x:Name="SortPeople" HorizontalAlignment="Right" />
+            <atom:ThemeToggle HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </StackPanel>
         
     </Grid>
 </UserControl>

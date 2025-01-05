@@ -8,6 +8,9 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Views\Organisms\TitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Organisms\ControlPages\ContentDialogContent.xaml">
       <SubType>Designer</SubType>
     </Page>

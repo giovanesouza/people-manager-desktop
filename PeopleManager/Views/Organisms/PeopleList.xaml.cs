@@ -1,8 +1,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
-using PeopleManager.Utils;
 using PeopleManager.ViewModels;
 using PeopleManager.Views.Organisms.ControlPages;
 using Prism.Events;
@@ -38,7 +38,7 @@ namespace PeopleManager.Views.Organisms
             {
                 DialogTemplate.ShowDialog(this.XamlRoot, resourceLoader.GetString("EmptyFieldsDialogMessage"));
             } 
-            else if (!string.IsNullOrEmpty(Name) || !string.IsNullOrEmpty(SurName) || !string.IsNullOrEmpty(CPF))
+            if (!string.IsNullOrEmpty(Name) || !string.IsNullOrEmpty(SurName) || !string.IsNullOrEmpty(CPF))
             {
                 var filteredPerson = peopleList.Where(p =>
                 (string.IsNullOrWhiteSpace(Name) || p.Name.StartsWith(Name, StringComparison.CurrentCultureIgnoreCase)) &&
@@ -125,6 +125,5 @@ namespace PeopleManager.Views.Organisms
                     EventAggregator.Current.GetEvent<UpdatePersonEvent>().Publish(editedPerson);
             }
         }
-
     }
 }

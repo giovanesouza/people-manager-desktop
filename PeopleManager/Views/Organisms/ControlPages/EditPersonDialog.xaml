@@ -2,15 +2,14 @@
 <ContentDialog
     x:Class="PeopleManager.Views.Organisms.ControlPages.EditPersonDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PeopleManager.Views.Organisms.ControlPages"
-    xmlns:resources="using:PeopleManager.Utils"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resource="using:PeopleManager.Common"
     mc:Ignorable="d"
-    Title="{resources:ResourceExtension Key=EditDialogTitle}"
-    PrimaryButtonText="{resources:ResourceExtension Key=UpdateButton}"
-    CloseButtonText="{resources:ResourceExtension Key=CancelButton}">
+    Title="{resource:ResourceExtension Key=EditDialogTitle}"
+    PrimaryButtonText="{resource:ResourceExtension Key=UpdateButton}"
+    CloseButtonText="{resource:ResourceExtension Key=CancelButton}">
     
     <Grid>
         <StackPanel>

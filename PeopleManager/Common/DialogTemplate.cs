@@ -2,7 +2,7 @@
 using PeopleManager.Views.Organisms.ControlPages;
 using System;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     public static class DialogTemplate
     {

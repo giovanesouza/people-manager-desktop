@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     static class FormatData
     {

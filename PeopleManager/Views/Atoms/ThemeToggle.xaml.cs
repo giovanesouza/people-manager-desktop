@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.Utils;
+using PeopleManager.Common;
 
 namespace PeopleManager.Views.Atoms
 {

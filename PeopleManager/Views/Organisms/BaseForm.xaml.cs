@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.Utils;
+using PeopleManager.Common;
 using System;
 using System.Windows.Input;
 

@@ -1,5 +1,5 @@
-﻿using PeopleManager.Services;
-using PeopleManager.Utils;
+﻿using PeopleManager.Common;
+using PeopleManager.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;

@@ -159,6 +159,9 @@
   <data name="LabelFullName" xml:space="preserve">
     <value>Nome Completo</value>
   </data>
+  <data name="LabelRegisteredAt" xml:space="preserve">
+    <value>Data de Cadastro</value>
+  </data>
   <data name="LabelSocialSecurityNumber" xml:space="preserve">
     <value>CPF</value>
   </data>
