@@ -22,6 +22,7 @@
     <None Remove="Views\Organisms\ControlPages\ContentDialogContent.xaml" />
     <None Remove="Views\Organisms\CustomTitleBar.xaml" />
     <None Remove="Views\Organisms\ControlPages\EditPersonDialog.xaml" />
+    <None Remove="Views\Organisms\TitleBar.xaml" />
     <None Remove="Views\PeopleView.xaml" />
   </ItemGroup>
 
@@ -52,6 +53,11 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Organisms\TitleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Organisms\ControlPages\ContentDialogContent.xaml">

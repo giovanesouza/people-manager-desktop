@@ -1,4 +1,4 @@
-﻿namespace PeopleManager.Utils
+﻿namespace PeopleManager.Abstracts
 {
     public interface ILocalizationService
     {

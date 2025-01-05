@@ -1,6 +1,7 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using PeopleManager.Abstracts;
+using Windows.ApplicationModel.Resources;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     public class LocalizationService : ILocalizationService
     {

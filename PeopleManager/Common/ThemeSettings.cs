@@ -1,6 +1,6 @@
 ﻿using Windows.Storage;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     public static class ThemeSettings
     {

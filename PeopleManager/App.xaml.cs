@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.Globalization;
-using PeopleManager.Utils;
+using PeopleManager.Abstracts;
+using PeopleManager.Common;
 using PeopleManager.ViewModels;
 using PeopleManager.Views;
 using Prism.Events;
 using System;
-//using System.Globalization;
 
 namespace PeopleManager
 {
@@ -21,9 +21,6 @@ namespace PeopleManager
             ConfigureServices();
             //ApplicationLanguages.PrimaryLanguageOverride = "en-US";
             ApplicationLanguages.PrimaryLanguageOverride = "pt-BR";
-
-            //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
-            //CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
         }
 
         private void ConfigureServices()

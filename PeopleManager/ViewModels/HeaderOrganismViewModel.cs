@@ -1,7 +1,8 @@
-﻿using PeopleManager.Events;
+﻿using PeopleManager.Abstracts;
+using PeopleManager.Common;
+using PeopleManager.Events;
 using PeopleManager.Models;
 using PeopleManager.Services;
-using PeopleManager.Utils;
 using Prism.Events;
 using System.Collections.Generic;
 using System.ComponentModel;

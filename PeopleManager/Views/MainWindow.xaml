@@ -11,14 +11,34 @@
     xmlns:resources="using:PeopleManager.Utils"
     x:Name="mainWindow"
     mc:Ignorable="d"
-    Title="{resources:ResourceExtension Key=AppTitle}">
+    SizeChanged="MainWindow_SizeChanged">
 
     <Grid Background="{ThemeResource BG-Window}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="31"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <!--Title bar-->
+        <organisms:TitleBar 
+            x:Name="TitleBar" 
+            Grid.Row="0" />
+        <Grid 
+            x:Name="CaptionButtonBackground" 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Background="{ThemeResource BG-CaptionButton}" 
+            Width="138" />
+
+        <!--Main content-->
+        <ScrollViewer 
+            Grid.Row="2" 
+            Grid.ColumnSpan="2" 
+            VerticalScrollBarVisibility="Auto">
             <views:Home />
         </ScrollViewer>
     </Grid>

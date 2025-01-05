@@ -1,4 +1,4 @@
-﻿namespace PeopleManager.Utils
+﻿namespace PeopleManager.Common
 {
     static class ValidateData
     {

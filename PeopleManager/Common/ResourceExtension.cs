@@ -1,8 +1,8 @@
 ﻿using Microsoft.UI.Xaml.Markup;
-using Windows.ApplicationModel.Resources;
 using System;
+using Windows.ApplicationModel.Resources;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     public partial class ResourceExtension : MarkupExtension
     {

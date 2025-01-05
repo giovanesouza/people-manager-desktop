@@ -1,5 +1,5 @@
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.Utils;
+using PeopleManager.Common;
 
 namespace PeopleManager.Views.Organisms.ControlPages
 {

@@ -6,6 +6,7 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <Color x:Key="BG-Window">#FFFFFF</Color>
+            <Color x:Key="BG-CaptionButton">#0D6EFD</Color>
             <Color x:Key="BG-Blue">#0D6EFD</Color>
             <Color x:Key="BG-PrimaryButton">#0D6EFD</Color>
             <Color x:Key="BG-SecondaryButton">#7D858C</Color>
@@ -38,6 +39,7 @@
 
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="BG-Window">#212529</Color>
+            <Color x:Key="BG-CaptionButton">#212529</Color>
             <Color x:Key="BG-Blue">#DDD</Color>
             <Color x:Key="BG-PrimaryButton">#287EFD</Color>
             <Color x:Key="BG-SecondaryButton">#807D858C</Color>

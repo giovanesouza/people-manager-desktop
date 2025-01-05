@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     public class IdGenerator
     {

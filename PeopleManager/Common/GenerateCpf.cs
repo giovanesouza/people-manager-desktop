@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PeopleManager.Utils
+namespace PeopleManager.Common
 {
     static class GenerateCpf
     {
