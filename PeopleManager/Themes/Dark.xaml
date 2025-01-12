@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="BG-Window">#212529</Color>
+            <Color x:Key="BG-CaptionButton">#212529</Color>
+            <Color x:Key="BG-Blue">#DDD</Color>
+            <Color x:Key="BG-PrimaryButton">#287EFD</Color>
+            <Color x:Key="BG-SecondaryButton">#807D858C</Color>
+            <Color x:Key="BG-Danger">#E04A59</Color>
+            <Color x:Key="BG-Warning">#FFC71E</Color>
+            <Color x:Key="BG-Dialog">#212529</Color>
+            <Color x:Key="BG-DialogText">#30DDDDDD</Color>
+            <Color x:Key="Color-White">#FFFFFF</Color>
+            <Color x:Key="Color-Dark">#212529</Color>
+            <Color x:Key="Color-Black">#212529</Color>
+            <Color x:Key="Color-Blue">#FFFFFF</Color>
+            <Color x:Key="Color-WhiteButton">#FFFFFF</Color>
+
+            <Style x:Key="DialogStyle" TargetType="ContentDialog">
+                <Setter Property="Background" Value="{ThemeResource BG-Dialog}" />
+                <Setter Property="Foreground" Value="{ThemeResource Color-White}" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="ButtonConfirmStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource BG-PrimaryButton}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Foreground" Value="{ThemeResource Color-WhiteButton}" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="ButtonDeleteStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource BG-Danger}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Foreground" Value="{ThemeResource Color-WhiteButton}" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="ButtonCloseCancelStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource Color-Black}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Foreground" Value="{ThemeResource Color-WhiteButton}" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

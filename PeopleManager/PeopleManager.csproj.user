@@ -8,6 +8,12 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Organisms\TitleBar.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -15,9 +21,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Atoms\ThemeToggle.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\ThemeResources.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Organisms\CustomTitleBar.xaml">
