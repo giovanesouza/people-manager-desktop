@@ -107,7 +107,6 @@ namespace PeopleManager.Models
             RegisteredAt = string.Format("{0:d} às {0:t}", DateTime.Now);
         }
 
-
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
