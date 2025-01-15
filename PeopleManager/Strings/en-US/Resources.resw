@@ -183,6 +183,9 @@
   <data name="RegisterButton" xml:space="preserve">
     <value>REGISTER</value>
   </data>
+  <data name="RegisterDialogErrorMessage" xml:space="preserve">
+    <value>To register, fill in all fields.</value>
+  </data>
   <data name="RegisterTitle" xml:space="preserve">
     <value>REGISTER</value>
   </data>
