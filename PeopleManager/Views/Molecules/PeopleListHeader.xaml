@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="PeopleManager.Views.Molecules.PeopleListHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PeopleManager.Views.Molecules"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resource="using:PeopleManager.Common"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource Color-Dark}" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="0,0,5,0" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="{ThemeResource BG-Blue}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350*" MinWidth="200" />
+            <ColumnDefinition Width="200*" MinWidth="150" />
+            <ColumnDefinition Width="200*" MinWidth="150" />
+            <ColumnDefinition Width="250*" MinWidth="200" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Column="0" 
+            Text="{resource:ResourceExtension Key=LabelFullName}"
+            Style="{StaticResource HeaderTextBlockStyle}" />
+
+        <TextBlock 
+            Grid.Column="1"
+            Text="{resource:ResourceExtension Key=LabelSocialSecurityNumber}"
+            Style="{StaticResource HeaderTextBlockStyle}" />
+
+        <TextBlock 
+            Grid.Column="2"
+            Text="{resource:ResourceExtension Key=LabelRegisteredAt}"
+            Style="{StaticResource HeaderTextBlockStyle}" />
+
+        <TextBlock 
+            Grid.Column="3"
+            Text="{resource:ResourceExtension Key=LabelActions}" 
+            Style="{StaticResource HeaderTextBlockStyle}" 
+            HorizontalTextAlignment="Center" />
+    </Grid>
+</UserControl>

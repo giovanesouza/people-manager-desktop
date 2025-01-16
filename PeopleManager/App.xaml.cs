@@ -3,6 +3,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.Windows.Globalization;
 using PeopleManager.Abstracts;
 using PeopleManager.Common;
+using PeopleManager.Repositories;
+using PeopleManager.Services;
 using PeopleManager.ViewModels;
 using PeopleManager.Views;
 using Prism.Events;
@@ -29,9 +31,13 @@ namespace PeopleManager
 
             services.AddSingleton<IEventAggregator, EventAggregator>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
+            services.AddSingleton<IPersonRepository, PersonRepository>();
+            services.AddSingleton<IDialogService, DialogService>();
 
             services.AddTransient<HeaderOrganismViewModel>();
             services.AddTransient<PeopleListViewModel>();
+            services.AddTransient<PeopleListItemViewModel>();
+            services.AddTransient<PersonService>();
 
             Services = services.BuildServiceProvider();
         }

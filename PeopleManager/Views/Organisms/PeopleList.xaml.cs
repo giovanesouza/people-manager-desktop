@@ -14,7 +14,7 @@ namespace PeopleManager.Views.Organisms
     {
         private readonly PeopleListViewModel viewModel;
         private readonly ResourceLoader resourceLoader;
-        private bool filteredItems = false;
+        private bool filteredItems = false; 
 
         public PeopleList()
         {
