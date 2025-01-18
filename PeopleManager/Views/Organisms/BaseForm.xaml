@@ -41,13 +41,15 @@
                  Text="{x:Bind CpfField, Mode=TwoWay}"
                  KeyUp="FormatCpf_KeyUp"/>
         <Grid>
-            <Button Margin="0,5,0,0" 
-                    HorizontalAlignment="Left"
-                    Foreground="{ThemeResource Color-WhiteButton}"
-                    Background="{ThemeResource BG-SecondaryButton}"
-                    Visibility="{x:Bind ButtonLeftVisibility, Mode=TwoWay}" 
-                    Content="{resource:ResourceExtension Key=ClearButton}"
-                    Command="{x:Bind ButtonLeftCommand}"/>
+            <Button 
+                x:Name="BtnClear"
+                Margin="0,5,0,0" 
+                HorizontalAlignment="Left"
+                Foreground="{ThemeResource Color-WhiteButton}"
+                Background="{ThemeResource BG-SecondaryButton}"
+                Visibility="{x:Bind ButtonLeftVisibility, Mode=TwoWay}" 
+                Content="{resource:ResourceExtension Key=ClearButton}"
+                Command="{x:Bind ButtonLeftCommand}"/>
             <Button
                  x:Name="BtnSend"
                  Margin="0,5,0,0"

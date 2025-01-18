@@ -2,20 +2,17 @@
 using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
-using PeopleManager.Services;
 using Prism.Events;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PeopleManager.ViewModels
 {
-    public partial class HeaderOrganismViewModel : INotifyPropertyChanged
+    public partial class HeaderOrganismViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalizationService _localizationService;
+        private IDialogService _dialogService;
         private string _registerName;
         private string _registerSurname;
         private string _registerCpf;
@@ -28,13 +25,14 @@ namespace PeopleManager.ViewModels
         public ICommand FilterPersonCommand { get; }
         public ICommand ClearFilterButtonCommand { get; }
 
-        public HeaderOrganismViewModel(IEventAggregator eventAggregator, ILocalizationService localizationService)
+        public HeaderOrganismViewModel(IEventAggregator eventAggregator, ILocalizationService localizationService, IDialogService dialogService)
         {
             _eventAggregator = eventAggregator;
             _localizationService = localizationService;
-            RegisterPersonCommand = new RelayCommand(RegisterPerson);
-            FilterPersonCommand = new RelayCommand(FilterPerson);
-            ClearFilterButtonCommand = new RelayCommand(ClearFilterFields);
+            _dialogService = dialogService;
+            RegisterPersonCommand = new RelayCommand<Person>(RegisterPerson);
+            FilterPersonCommand = new RelayCommand<Person>(FilterPerson);
+            ClearFilterButtonCommand = new RelayCommand<Person>(ClearFilterFields);
         }
 
         #region Properties
@@ -82,9 +80,13 @@ namespace PeopleManager.ViewModels
         #endregion
 
 
-        public void RegisterPerson(object obj)
+        public async Task RegisterPerson(object obj)
         {
-            UpdateCanRegister();
+             UpdateCanRegister();
+
+            if (!CanRegister)
+                await _dialogService.ShowConfirmationDialogAsync("", _localizationService.GetString("RegisterDialogErrorMessage"), "", "ButtonDeleteStyle");
+
             if (CanRegister)
             {
                 //int id = PersonManager.GetPeople().Count + 1;
@@ -138,17 +140,6 @@ namespace PeopleManager.ViewModels
                 FilterSurname = string.Empty;
                 FilterCpf = string.Empty;
             }
-        }
-
-        protected bool OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (!EqualityComparer<T>.Default.Equals(field, value))
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-            return false;
         }
     }
 }

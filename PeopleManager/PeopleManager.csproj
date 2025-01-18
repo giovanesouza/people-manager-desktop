@@ -18,6 +18,8 @@
     <None Remove="Themes\Light.xaml" />
     <None Remove="Views\Atoms\ThemeToggle.xaml" />
     <None Remove="Views\Home.xaml" />
+    <None Remove="Views\Molecules\PeopleListHeader.xaml" />
+    <None Remove="Views\Molecules\PeopleListItem.xaml" />
     <None Remove="Views\Molecules\SocialMedia.xaml" />
     <None Remove="Views\Organisms\BaseForm.xaml" />
     <None Remove="Views\Organisms\ControlPages\ContentDialogContent.xaml" />
@@ -54,6 +56,16 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Molecules\PeopleListItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Molecules\PeopleListHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\Light.xaml">

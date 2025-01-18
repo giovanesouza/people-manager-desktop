@@ -31,12 +31,11 @@ namespace PeopleManager.Services
             return await GetData("apelidos", totalSurnames);
         }
 
-        private async Task<List<string>> GetData(string endpoint, int n)
+        private async Task<List<string>> GetData(string endpoint, int total)
         {
-            var request = new RestRequest($"{endpoint}/{n}");
+            var request = new RestRequest($"{endpoint}/{total}");
             var response = await _client.ExecuteAsync<List<string>>(request);
             return response.Data;
         }
-
     }
 }
