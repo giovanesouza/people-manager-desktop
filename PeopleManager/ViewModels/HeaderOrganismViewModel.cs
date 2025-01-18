@@ -3,7 +3,6 @@ using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
 using Prism.Events;
-using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
