@@ -2,7 +2,7 @@
 
 namespace PeopleManager.Common
 {
-    static class GenerateCpf
+    public static class GenerateCpf
     {
         public static string Create()
         {
@@ -25,16 +25,16 @@ namespace PeopleManager.Common
             return string.Format("{0:000\\.000\\.000\\-00}", long.Parse(string.Join("", cpf)));
         }
 
-        static int CalculateCheckDigit(int[] cpf, int tamanho)
+        static int CalculateCheckDigit(int[] cpf, int size)
         {
-            int soma = 0;
-            for (int i = 0; i < tamanho; i++)
+            int sum = 0;
+            for (int i = 0; i < size; i++)
             {
-                soma += cpf[i] * (tamanho + 1 - i);
+                sum += cpf[i] * (size + 1 - i);
             }
 
-            int resto = soma % 11;
-            return resto < 2 ? 0 : 11 - resto;
+            int rest = sum % 11;
+            return rest < 2 ? 0 : 11 - rest;
         }
 
     }

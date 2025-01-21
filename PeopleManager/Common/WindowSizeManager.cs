@@ -25,13 +25,13 @@ namespace PeopleManager.Common
             SetMinimumSize();
         }
 
-        private void SetInitialSize(int width, int height)
+        public void SetInitialSize(int width, int height)
         {
             var newSize = new SizeInt32 { Width = width, Height = height };
             appWindow.Resize(newSize);
         }
 
-        private void CenterWindow()
+        public void CenterWindow()
         {
             var displayArea = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Primary);
             var workArea = displayArea.WorkArea;
@@ -45,7 +45,7 @@ namespace PeopleManager.Common
             appWindow.MoveAndResize(centerPosition);
         }
 
-        private void SetMinimumSize()
+        public void SetMinimumSize()
         {
             appWindow.Changed += (sender, args) =>
             {

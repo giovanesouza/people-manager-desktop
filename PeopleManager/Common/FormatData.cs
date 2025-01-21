@@ -2,7 +2,7 @@
 
 namespace PeopleManager.Common
 {
-    static class FormatData
+    public static class FormatData
     {
         public static string FormatCpf(string cpf)
         {
