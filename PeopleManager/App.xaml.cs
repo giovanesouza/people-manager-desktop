@@ -32,11 +32,13 @@ namespace PeopleManager
             services.AddSingleton<IEventAggregator, EventAggregator>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
             services.AddSingleton<IPersonRepository, PersonRepository>();
+            services.AddSingleton<IOpenUrlHelperService, OpenUrlHelperService>();
             services.AddSingleton<IDialogService, DialogService>();
 
             services.AddTransient<HeaderOrganismViewModel>();
             services.AddTransient<PeopleListViewModel>();
             services.AddTransient<PeopleListItemViewModel>();
+            services.AddTransient<FooterViewModel>();
             services.AddTransient<PersonService>();
 
             Services = services.BuildServiceProvider();
