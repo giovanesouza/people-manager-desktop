@@ -7,8 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:organisms="using:PeopleManager.Views.Organisms"
-    xmlns:views="using:PeopleManager.Views"
-    xmlns:resources="using:PeopleManager.Utils"
+    xmlns:views="using:PeopleManager.Views" 
     x:Name="mainWindow"
     mc:Ignorable="d"
     SizeChanged="MainWindow_SizeChanged">

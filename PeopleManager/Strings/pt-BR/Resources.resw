@@ -153,6 +153,9 @@
   <data name="FilterTitle" xml:space="preserve">
     <value>FILTRAR</value>
   </data>
+  <data name="GitHubLink" xml:space="preserve">
+    <value>https://github.com/giovanesouza</value>
+  </data>
   <data name="LabelActions" xml:space="preserve">
     <value>Ações</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="LabelSocialSecurityNumber" xml:space="preserve">
     <value>CPF</value>
+  </data>
+  <data name="LinkedInLink" xml:space="preserve">
+    <value>https://www.linkedin.com/in/developergiovanesouza/</value>
   </data>
   <data name="PlaceholderDefault" xml:space="preserve">
     <value>Padrão</value>

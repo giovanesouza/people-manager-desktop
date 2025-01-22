@@ -6,21 +6,17 @@ using PeopleManager.Models;
 using PeopleManager.ViewModels;
 using PeopleManager.Views.Organisms.ControlPages;
 using Prism.Events;
-using System;
-using Windows.ApplicationModel.Resources;
 
 namespace PeopleManager.Views.Molecules
 {
     public sealed partial class PeopleListItem : UserControl
     {
         private readonly PeopleListItemViewModel _viewModel;
-        private readonly ResourceLoader resourceLoader;
         public PeopleListItem()
         {
             this.InitializeComponent();
             _viewModel = App.GetService<PeopleListItemViewModel>();
             DataContext = _viewModel;
-            resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
         }
 
         public static readonly DependencyProperty PersonInfoProperty =
