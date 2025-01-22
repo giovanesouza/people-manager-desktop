@@ -53,7 +53,7 @@
 
                 <StackPanel Orientation="Horizontal" Spacing="5">
                     <FontIcon Glyph="&#xE70F;" />
-                    <TextBlock Text="{resource:ResourceExtension Key=EditButtonList}" />
+                    <TextBlock x:Name="EditPersonText" Text="{resource:ResourceExtension Key=EditButtonList}" />
                 </StackPanel>
             </Button>
 
@@ -70,7 +70,7 @@
                 <StackPanel Orientation="Horizontal" Spacing="5">
                     <!-- <SymbolIcon Symbol="Delete" /> -->
                     <FontIcon Glyph="&#xE74D;" />
-                    <TextBlock Text="{resource:ResourceExtension Key=DeleteButtonList}" />
+                    <TextBlock x:Name="DeletePersonText" Text="{resource:ResourceExtension Key=DeleteButtonList}" />
                 </StackPanel>
             </Button>
         </StackPanel>
