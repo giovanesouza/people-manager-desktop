@@ -1,11 +1,11 @@
 using Microsoft.UI.Xaml.Controls;
-using PeopleManager.Events;
-using Prism.Events;
+using PeopleManager.Common;
 
 namespace PeopleManager.Views.Organisms
 {
     public partial class OrderPeople : UserControl
     {
+        private readonly SortService _sortService = new();
         public OrderPeople()
         {
             this.InitializeComponent();
@@ -14,9 +14,7 @@ namespace PeopleManager.Views.Organisms
         private void Ordination_Changed(object sender, SelectionChangedEventArgs e)
         {
             var comboBoxItem = ComboBoxOrdination.SelectedValue as ComboBoxItem; // Cast
-            var sortBy = comboBoxItem.Content.ToString();
-            EventAggregator.Current.GetEvent<PeopleSortedEvent>().Publish(sortBy);
+            _sortService.SortPeopleBy = comboBoxItem.Content.ToString();
         }
-
     }
 }

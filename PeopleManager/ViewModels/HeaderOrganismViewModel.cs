@@ -3,8 +3,6 @@ using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
 using Prism.Events;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace PeopleManager.ViewModels
 {
@@ -12,7 +10,8 @@ namespace PeopleManager.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalizationService _localizationService;
-        private IDialogService _dialogService;
+        private readonly ISortService _sortService;
+        private readonly IDialogService _dialogService;
         private string _registerName;
         private string _registerSurname;
         private string _registerCpf;
@@ -25,14 +24,19 @@ namespace PeopleManager.ViewModels
         public ICommand FilterPersonCommand { get; }
         public ICommand ClearFilterButtonCommand { get; }
 
-        public HeaderOrganismViewModel(IEventAggregator eventAggregator, ILocalizationService localizationService, IDialogService dialogService)
+        public HeaderOrganismViewModel(IEventAggregator eventAggregator,
+            ILocalizationService localizationService,
+            IDialogService dialogService,
+            ISortService sortService)
         {
             _eventAggregator = eventAggregator;
             _localizationService = localizationService;
             _dialogService = dialogService;
+            _sortService = sortService;
             RegisterPersonCommand = new RelayCommand<Person>(RegisterPerson);
             FilterPersonCommand = new RelayCommand<Person>(FilterPerson);
             ClearFilterButtonCommand = new RelayCommand<Person>(ClearFilterFields);
+            _sortService = sortService;
         }
 
         #region Properties
@@ -82,7 +86,7 @@ namespace PeopleManager.ViewModels
 
         public async Task RegisterPerson(object obj)
         {
-             UpdateCanRegister();
+            UpdateCanRegister();
 
             if (!CanRegister)
                 await _dialogService.ShowConfirmationDialogAsync("", _localizationService.GetString("RegisterDialogErrorMessage"), "", "ButtonDeleteStyle");
@@ -93,7 +97,7 @@ namespace PeopleManager.ViewModels
                 string id = IdGenerator.GenerateId();
                 Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
-                _eventAggregator.GetEvent<PeopleSortedEvent>().Publish(_localizationService.GetString("PlaceholderDefault"));
+                _sortService.SortPeopleBy = _sortService.SortPeopleBy;
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;
             }

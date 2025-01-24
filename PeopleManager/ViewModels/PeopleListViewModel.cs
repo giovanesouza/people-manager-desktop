@@ -25,8 +25,6 @@ namespace PeopleManager.ViewModels
             People = _personService.GetPeople();
         }
 
-        //public ObservableCollection<Person> People { get; }
-
         public ObservableCollection<Person> People
         {
             get => _people;
