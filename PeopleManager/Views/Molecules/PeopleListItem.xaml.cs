@@ -7,7 +7,6 @@ using PeopleManager.Models;
 using PeopleManager.ViewModels;
 using PeopleManager.Views.Organisms.ControlPages;
 using Prism.Events;
-using System;
 
 namespace PeopleManager.Views.Molecules
 {

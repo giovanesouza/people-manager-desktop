@@ -4,7 +4,6 @@ using PeopleManager.Events;
 using PeopleManager.Models;
 using PeopleManager.ViewModels;
 using Prism.Events;
-using System;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
 

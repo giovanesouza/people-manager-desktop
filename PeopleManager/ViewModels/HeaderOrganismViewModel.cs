@@ -10,7 +10,6 @@ namespace PeopleManager.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalizationService _localizationService;
-        private readonly ISortService _sortService;
         private readonly IDialogService _dialogService;
         private string _registerName;
         private string _registerSurname;
@@ -24,19 +23,14 @@ namespace PeopleManager.ViewModels
         public ICommand FilterPersonCommand { get; }
         public ICommand ClearFilterButtonCommand { get; }
 
-        public HeaderOrganismViewModel(IEventAggregator eventAggregator,
-            ILocalizationService localizationService,
-            IDialogService dialogService,
-            ISortService sortService)
+        public HeaderOrganismViewModel(IEventAggregator eventAggregator, ILocalizationService localizationService, IDialogService dialogService)
         {
             _eventAggregator = eventAggregator;
             _localizationService = localizationService;
             _dialogService = dialogService;
-            _sortService = sortService;
             RegisterPersonCommand = new RelayCommand<Person>(RegisterPerson);
             FilterPersonCommand = new RelayCommand<Person>(FilterPerson);
             ClearFilterButtonCommand = new RelayCommand<Person>(ClearFilterFields);
-            _sortService = sortService;
         }
 
         #region Properties
@@ -97,7 +91,6 @@ namespace PeopleManager.ViewModels
                 string id = IdGenerator.GenerateId();
                 Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
-                _sortService.SortPeopleBy = _sortService.SortPeopleBy;
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;
             }
