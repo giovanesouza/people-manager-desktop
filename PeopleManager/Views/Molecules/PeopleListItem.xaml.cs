@@ -1,3 +1,4 @@
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using PeopleManager.Common;
@@ -17,6 +18,7 @@ namespace PeopleManager.Views.Molecules
             this.InitializeComponent();
             _viewModel = App.GetService<PeopleListItemViewModel>();
             DataContext = _viewModel;
+            EventAggregator.Current.GetEvent<ResizeComponents>().Subscribe(AdjustButtonVisibilityBasedOnSize);
         }
 
         public static readonly DependencyProperty PersonInfoProperty =
@@ -26,7 +28,6 @@ namespace PeopleManager.Views.Molecules
         {
             get { return (Person)GetValue(PersonInfoProperty); }
             set { SetValue(PersonInfoProperty, value); }
-
         }
 
         private static void OnPersonInfoPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -66,5 +67,28 @@ namespace PeopleManager.Views.Molecules
             }
         }
 
+        private void AdjustButtonVisibilityBasedOnSize(Dimensions dimensions)
+        {
+            switch (dimensions.Size)
+            {
+                case Sizes.Infinity:
+                    ButtonTextActionsVisibility(true);
+                    break;
+                case Sizes.ExtraLarge:
+                    ButtonTextActionsVisibility(false);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ButtonTextActionsVisibility(bool isVisible)
+        {
+            DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+            {
+                EditPersonText.Visibility = isVisible ? Visibility.Visible : Visibility.Collapsed;
+                DeletePersonText.Visibility = isVisible ? Visibility.Visible : Visibility.Collapsed;
+            });
+        }
     }
 }

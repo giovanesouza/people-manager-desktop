@@ -34,6 +34,7 @@ namespace PeopleManager
             services.AddSingleton<IPersonRepository, PersonRepository>();
             services.AddSingleton<IOpenUrlHelperService, OpenUrlHelperService>();
             services.AddSingleton<IDialogService, DialogService>();
+            services.AddSingleton<ISortService, SortService>();
 
             services.AddTransient<HeaderOrganismViewModel>();
             services.AddTransient<PeopleListViewModel>();

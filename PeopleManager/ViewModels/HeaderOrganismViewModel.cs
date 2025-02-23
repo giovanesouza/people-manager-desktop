@@ -3,8 +3,6 @@ using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
 using Prism.Events;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace PeopleManager.ViewModels
 {
@@ -12,7 +10,7 @@ namespace PeopleManager.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalizationService _localizationService;
-        private IDialogService _dialogService;
+        private readonly IDialogService _dialogService;
         private string _registerName;
         private string _registerSurname;
         private string _registerCpf;
@@ -82,7 +80,7 @@ namespace PeopleManager.ViewModels
 
         public async Task RegisterPerson(object obj)
         {
-             UpdateCanRegister();
+            UpdateCanRegister();
 
             if (!CanRegister)
                 await _dialogService.ShowConfirmationDialogAsync("", _localizationService.GetString("RegisterDialogErrorMessage"), "", "ButtonDeleteStyle");
@@ -93,7 +91,6 @@ namespace PeopleManager.ViewModels
                 string id = IdGenerator.GenerateId();
                 Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
-                _eventAggregator.GetEvent<PeopleSortedEvent>().Publish(_localizationService.GetString("PlaceholderDefault"));
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;
             }
