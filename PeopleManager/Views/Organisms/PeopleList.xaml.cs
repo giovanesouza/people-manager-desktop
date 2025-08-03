@@ -1,4 +1,6 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using PeopleManager.Common;
 using PeopleManager.Events;
 using PeopleManager.Models;
@@ -6,6 +8,7 @@ using PeopleManager.ViewModels;
 using Prism.Events;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
+using Windows.System;
 
 namespace PeopleManager.Views.Organisms
 {
@@ -13,7 +16,7 @@ namespace PeopleManager.Views.Organisms
     {
         private readonly PeopleListViewModel viewModel;
         private readonly ResourceLoader resourceLoader;
-        private bool filteredItems = false; 
+        private bool filteredItems = false;
 
         public PeopleList()
         {
@@ -79,5 +82,49 @@ namespace PeopleManager.Views.Organisms
             };
             */
         }
+
+        private void ListViewPeople_Loaded(object _, Microsoft.UI.Xaml.RoutedEventArgs __)
+        {
+            if (ListViewPeople.ContainerFromIndex(0) is ListViewItem item)
+            {
+                item.Focus(FocusState.Keyboard);
+            }
+            //if (ListViewPeople.Items.Count > 0)
+            //{
+            //    var item = ListViewPeople.ContainerFromIndex(0) as ListViewItem;
+            //    item?.Focus(FocusState.Keyboard);
+            //}
+        }
+
+        private void ListViewPeople_PreviewKeyDown(object _, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Tab)
+            {
+                // Aguardando a navegação para o próximo item
+                if (ListViewPeople.SelectedItem is ListViewItem item)
+                {
+                    item.Focus(FocusState.Keyboard);
+                }
+
+                //if (ListViewPeople.Items.Count > 0)
+                //{
+                //    if (ListViewPeople.SelectedItem is ListViewItem item)
+                //    {
+                //        item.Focus(FocusState.Keyboard);
+                //    }
+                //    //var item = ListViewPeople.ContainerFromIndex(0) as ListViewItem;
+                //    //item?.Focus(FocusState.Keyboard);
+                //}
+
+            }
+        }
+
+        //private void ListViewPeople_GettingFocus(object _, Microsoft.UI.Xaml.Input.GettingFocusEventArgs e)
+        //{
+        //    if (e.NewFocusedElement is ListViewItem newItem)
+        //    {
+        //        newItem.Focus(FocusState.Keyboard);
+        //    }
+        //}
     }
 }

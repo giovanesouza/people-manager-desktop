@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using PeopleManager.Common;
+using PeopleManager.Database;
 using PeopleManager.Events;
 using Prism.Events;
 
@@ -14,6 +15,7 @@ namespace PeopleManager.Views
         public MainWindow()
         {
             this.InitializeComponent();
+            Title = "People Manager"; // Pegar com LocalizedString
             this.ExtendsContentIntoTitleBar = true;
             this.SetTitleBar(TitleBar);
             _ = new WindowSizeManager(this, MinWindowWidth, MinWindowHeight, InitialWidth, MinWindowHeight);

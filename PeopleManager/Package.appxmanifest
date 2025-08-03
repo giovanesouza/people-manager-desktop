@@ -8,7 +8,7 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="89274e00-378d-4c59-b278-890e931517c4"
+    Name="GSPeopleManager"
     Publisher="CN=giova"
     Version="1.0.0.0" />
 
@@ -16,7 +16,7 @@
 
   <Properties>
     <DisplayName>PeopleManager</DisplayName>
-    <PublisherDisplayName>giova</PublisherDisplayName>
+    <PublisherDisplayName>giovane_souza</PublisherDisplayName>
     <Logo>Assets\Dtafalonso-Win-10x-People.48.png</Logo>
   </Properties>
 

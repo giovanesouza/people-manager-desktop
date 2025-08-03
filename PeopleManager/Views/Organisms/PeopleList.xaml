@@ -24,12 +24,14 @@
         <ListView 
             x:Name="ListViewPeople"
             Grid.Row="1"
+            TabNavigation="Local"
             ItemsSource="{Binding People}"
+            PreviewKeyDown="ListViewPeople_PreviewKeyDown"
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Person">
-                    <StackPanel>
+                    <StackPanel AutomationProperties.Name="{x:Bind Fullname}">
                         <molecule:PeopleListItem x:Name="ListItem" PersonInfo="{x:Bind}" />
                     </StackPanel>
                 </DataTemplate>

@@ -87,9 +87,7 @@ namespace PeopleManager.ViewModels
 
             if (CanRegister)
             {
-                //int id = PersonManager.GetPeople().Count + 1;
-                string id = IdGenerator.GenerateId();
-                Person newPerson = new(id, RegisterName, RegisterSurname, RegisterCpf);
+                Person newPerson = new(RegisterName, RegisterSurname, RegisterCpf);
                 _eventAggregator.GetEvent<PersonAddedEvent>().Publish(newPerson);
                 ClearBaseFormFields("RegisterForm");
                 CanRegister = false;

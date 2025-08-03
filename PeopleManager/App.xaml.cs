@@ -3,12 +3,14 @@ using Microsoft.UI.Xaml;
 using Microsoft.Windows.Globalization;
 using PeopleManager.Abstracts;
 using PeopleManager.Common;
+using PeopleManager.Database;
 using PeopleManager.Repositories;
 using PeopleManager.Services;
 using PeopleManager.ViewModels;
 using PeopleManager.Views;
 using Prism.Events;
 using System;
+using System.IO;
 
 namespace PeopleManager
 {
@@ -31,10 +33,15 @@ namespace PeopleManager
 
             services.AddSingleton<IEventAggregator, EventAggregator>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
+
+            string connectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db", "DBSQLite.db")};Version=3;";
+            services.AddSingleton(connectionString);
+
             services.AddSingleton<IPersonRepository, PersonRepository>();
             services.AddSingleton<IOpenUrlHelperService, OpenUrlHelperService>();
             services.AddSingleton<IDialogService, DialogService>();
             services.AddSingleton<ISortService, SortService>();
+            services.AddSingleton<DBConnection>();
 
             services.AddTransient<HeaderOrganismViewModel>();
             services.AddTransient<PeopleListViewModel>();

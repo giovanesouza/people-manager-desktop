@@ -8,6 +8,6 @@ namespace PeopleManager.Abstracts
         ObservableCollection<Person> GetAll();
         void Create(Person person);
         void Update(Person person);
-        void Delete(string id);
+        void Delete(int id);
     }
 }

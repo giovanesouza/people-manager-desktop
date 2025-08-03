@@ -60,7 +60,8 @@ namespace PeopleManager.Views.Molecules
 
             if (result == ContentDialogResult.Primary)
             {
-                Person editedPerson = new(p.Id, editDialog.PersonName, editDialog.PersonSurname, editDialog.PersonCpf);
+                Person editedPerson = new(editDialog.PersonName, editDialog.PersonSurname, editDialog.PersonCpf);
+                editedPerson.Id = p.Id;
 
                 if (p != editedPerson)
                     EventAggregator.Current.GetEvent<UpdatePersonEvent>().Publish(editedPerson);

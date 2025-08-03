@@ -6,7 +6,7 @@ namespace PeopleManager.Models
     public partial class Person : INotifyPropertyChanged
     {
         #region Fields
-        private string _id;
+        private int _id;
         private string _name;
         private string _surname;
         private string _fullname;
@@ -16,7 +16,7 @@ namespace PeopleManager.Models
         #endregion
 
         #region Properties
-        public string Id
+        public int Id
         {
             get { return _id; }
             set
@@ -97,9 +97,10 @@ namespace PeopleManager.Models
         }
         #endregion
 
-        public Person(string id, string name, string surname, string cpf)
+        public Person() { }
+
+        public Person(string name, string surname, string cpf)
         {
-            Id = id;
             Name = name;
             Surname = surname;
             Fullname = $"{name} {surname}";

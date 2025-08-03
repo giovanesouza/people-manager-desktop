@@ -1,14 +1,19 @@
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
 using PeopleManager.ViewModels;
-using System.Diagnostics;
 using Windows.ApplicationModel.Resources;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI;
-using System.Windows;
-using Windows.UI;
 
 namespace PeopleManager.Views.Organisms
 {
+    // It defines a customized button with a different mouse cursor
+    //public partial class CustomBtn : HyperlinkButton
+    //{
+    //    public CustomBtn()
+    //    {
+    //        this.DefaultStyleKey = typeof(HyperlinkButton);
+    //        this.ProtectedCursor = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
+    //    }
+    //}
     public sealed partial class Footer : UserControl
     {
         private readonly FooterViewModel viewModel;

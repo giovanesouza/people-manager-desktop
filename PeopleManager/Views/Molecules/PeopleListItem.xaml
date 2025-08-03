@@ -22,18 +22,24 @@
             Text="{Binding PersonInfo.Fullname}"
             Foreground="{ThemeResource Color-White}" 
             Padding="5" 
+            IsTabStop="True"
+            TabIndex="1"
             VerticalAlignment="Center" />
         <TextBlock 
             Grid.Column="1" 
             Text="{Binding PersonInfo.Cpf}" 
             Foreground="{ThemeResource Color-White}" 
             Padding="5" 
+            IsTabStop="True"
+            TabIndex="2"
             VerticalAlignment="Center"/>
         <TextBlock 
             Grid.Column="2" 
             Text="{Binding PersonInfo.RegisteredAt}" 
             Foreground="{ThemeResource Color-White}" 
             Padding="5" 
+            IsTabStop="True"
+            TabIndex="3"
             VerticalAlignment="Center"/>
 
         <StackPanel 
@@ -49,6 +55,8 @@
                 AutomationProperties.Name="{resource:ResourceExtension Key=EditButtonList}"
                 FontWeight="SemiBold"
                 Margin="2"
+                IsTabStop="True"
+                TabIndex="4"
                 Click="EditPerson_Click">
 
                 <StackPanel Orientation="Horizontal" Spacing="5">
@@ -64,6 +72,8 @@
                 AutomationProperties.Name="{resource:ResourceExtension Key=DeleteButtonList}"
                 FontWeight="SemiBold"
                 Margin="2" 
+                IsTabStop="True"
+                TabIndex="5"
                 Command="{Binding DeleteCommand}"
                 CommandParameter="{Binding PersonInfo}">
                 

@@ -36,12 +36,14 @@ namespace PeopleManager.ViewModels
         private void AddPerson(Person person)
         {
             _personService.CreatePerson(person);
+            UpdatePeopleList();
             _sortService.SortPeopleBy = _sortService.SortPeopleBy;
         }
 
-        private void RemovePerson(string id)
+        private void RemovePerson(int id)
         {
             _personService.DeletePerson(id);
+            UpdatePeopleList();
             _sortService.SortPeopleBy = _sortService.SortPeopleBy;
         }
 
@@ -50,8 +52,11 @@ namespace PeopleManager.ViewModels
             if (person != null)
             {
                 _personService.UpdatePerson(person);
+                UpdatePeopleList();
                 _sortService.SortPeopleBy = _sortService.SortPeopleBy;
             }
         }
+
+        private void UpdatePeopleList() => People = _personService.GetPeople();
     }
 }

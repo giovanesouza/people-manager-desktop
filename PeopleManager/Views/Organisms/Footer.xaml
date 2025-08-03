@@ -6,6 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resource="using:PeopleManager.Common"
+    xmlns:local="using:PeopleManager.Views.Organisms"
     mc:Ignorable="d">
 
     <StackPanel
@@ -23,6 +24,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="1" />
+            <!--<local:CustomBtn Grid.Column="1" Margin="5" Width="100" Background="LightGreen" x:Name="myBtn">Button</local:CustomBtn>-->
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock 

@@ -2,5 +2,5 @@
 
 namespace PeopleManager.Events
 {
-    public class DeletePersonEvent : PubSubEvent<string> { }
+    public class DeletePersonEvent : PubSubEvent<int> { }
 }
