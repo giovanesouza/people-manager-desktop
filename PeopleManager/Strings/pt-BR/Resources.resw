@@ -123,6 +123,9 @@
   <data name="CancelButton" xml:space="preserve">
     <value>CANCELAR</value>
   </data>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>Escolha um idioma</value>
+  </data>
   <data name="ClearButton" xml:space="preserve">
     <value>LIMPAR CAMPOS</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="EmptyFieldsDialogMessage" xml:space="preserve">
     <value>Preencha pelo menos um dos campos para filtrar registros.</value>
+  </data>
+  <data name="EnglishText" xml:space="preserve">
+    <value>Inglês</value>
   </data>
   <data name="FilterButton" xml:space="preserve">
     <value>FILTRAR</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="PlaceholderSortBy" xml:space="preserve">
     <value>Ordenar por</value>
+  </data>
+  <data name="PortugueseText" xml:space="preserve">
+    <value>Português</value>
   </data>
   <data name="RegisterButton" xml:space="preserve">
     <value>CADASTRAR</value>

@@ -51,6 +51,14 @@
         <StackPanel Grid.Column="2" x:Name="SortAndToggleStackPanel" Orientation="Horizontal" Spacing="10">
             <local:OrderPeople x:Name="SortPeople" HorizontalAlignment="Right" />
             <atom:ThemeToggle HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox x:Name="LanguageComboBox" SelectionChanged="LanguageComboBoxSelectionChanged"
+              Width="Auto"
+              Margin="10">
+                <ComboBoxItem Content="{resource:ResourceExtension Key=ChooseLanguage}" IsSelected="True" IsEnabled="False"  />
+                <ComboBoxItem Content="{resource:ResourceExtension Key=PortugueseText}" Tag="pt-BR"/>
+                <ComboBoxItem Content="{resource:ResourceExtension Key=EnglishText}" Tag="en-US"/>
+            </ComboBox>
+
         </StackPanel>
         
     </Grid>

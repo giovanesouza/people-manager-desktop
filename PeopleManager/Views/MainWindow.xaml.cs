@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.ApplicationModel.Resources;
 using PeopleManager.Common;
 using PeopleManager.Database;
 using PeopleManager.Events;
@@ -11,11 +12,12 @@ namespace PeopleManager.Views
         private readonly int MinWindowWidth = 780;
         private readonly int MinWindowHeight = 650;
         private readonly int InitialWidth = 1200;
+        private readonly ResourceLoader resourceLoader = new();
 
         public MainWindow()
         {
             this.InitializeComponent();
-            Title = "People Manager"; // Pegar com LocalizedString
+            Title = resourceLoader.GetString("AppTitle");
             this.ExtendsContentIntoTitleBar = true;
             this.SetTitleBar(TitleBar);
             _ = new WindowSizeManager(this, MinWindowWidth, MinWindowHeight, InitialWidth, MinWindowHeight);
